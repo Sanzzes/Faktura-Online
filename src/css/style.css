@@ -1,0 +1,185 @@
+/*
+ * Style.css crearted by Steven 'Sanzzes' Bohm
+ * Copyright (c) 2011
+*/
+
+@CHARSET "ISO-8859-1";
+#form_1_zeit { 
+    position:absolute;
+    padding:0px 0 0px 15%;
+
+}
+
+#zeit_submit {
+    background-image:url(../../images/icon/apply.png); width: 28px; height:28px;
+    border:none;
+    background-color:transparent;
+    cursor:pointer;
+}
+
+#controlbar {
+    float:right;
+    padding: 1px 0 0 0;
+}
+
+#form_tat_name { 
+    position:absolute;
+    padding:0.1% 0 0 0px;
+
+}
+#ustunden_user {
+    border:none;
+    background-color:black;
+    cursor:pointer;
+    padding: 0.1% 0 0 93.8%;
+}
+.tooltip {
+    display:none;
+    background:url(images/black_big.png);
+    height:194px;
+    width:370px;
+    font-size:11px;
+    color:#fff;
+}
+
+#slidershow {
+    position:relative;
+    width:483px; /* Change this to your images width */
+    height:281px; /* Change this to your images height */
+    background:url(images/loading.gif) no-repeat 50% 50%;
+}
+#slidershow img {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+}
+#slidershow a {
+    border:0;
+    display:block;
+}
+
+a {
+    outline:none;
+}
+img{
+    border:none;
+}
+
+#menu_select {
+    height:60px;
+    -moz-border-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+}
+
+#menu_start{
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;
+}
+#menu_ende{
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+}
+
+#content {
+    -moz-border-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+
+
+body {
+    font-family: "Trebuchet MS", sans-serif;
+    color: #1E242B;
+    text-align: center;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    outline: none;
+}
+
+.clearboth {
+    clear: both;
+}
+
+#wrapper {
+    text-align: left;
+    width: 80%;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.head {
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+    -moz-border-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+}
+
+.head h2 {
+    text-align: left;
+    color: #fff;
+    font-size: 1.6em;
+    float: left;
+}
+
+.head ul {
+    float: right;
+    list-style-type: none;
+    padding: 8px;
+}
+
+.head ul li {
+    display: inline;
+    font-weight: bold;
+}
+
+.head ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.head a{
+    margin-left: 1%
+}
+
+
+
+.maincontent {
+    width: 100%;
+    padding: 0 0 0 0;
+    -moz-border-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+

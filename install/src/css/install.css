@@ -1,0 +1,7 @@
+.submit_style {
+	background-image:url(../../images/next.png); width: 109px; height:40px;
+	border:none;
+	background-color:transparent;
+	cursor:pointer;
+	float:right;
+}
