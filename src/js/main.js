@@ -81,7 +81,11 @@ $(document).ready(function(){
 
 //Paging
    function openP(woID,paID,pgID){
-       $.post('index.php?pageID='+paID,{workerID: woID, page: pgID})
+       $.post('index.php?pageID='+paID,{worker_f: woID, page: pgID}, function(p_data){
+         $('#inhalte').empty();
+         var d_inhalt = $(p_data).data($('#inhalte'));
+         $('#inhalte').html(d_inhalt);
+       })
    }
 
 
