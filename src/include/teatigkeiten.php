@@ -5,7 +5,7 @@ if(isset($_POST['worker_f']))
 }
 else
 {
-	$workerID	= "0";	
+	$workerID	= $_SESSION['user_id'];
 }
 $pageNo = isset($_POST['page']) ? $_POST['page'] : '0';
 $intCounter = 0;
@@ -14,19 +14,7 @@ $intSet_anzahl = 0;
 
 $mytime = new timestamp();
 $sessionid = $_SESSION['user_id'];
-	
-		$mysql->query("SELECT * FROM synetics_clients ORDER BY synetics_clients_client");
-		$clients_result = $mysql->queryResult();
 
-		
-		if($_SESSION["user_rights"] > "1"){
-		$smarty->assign('boolsche','true');
-		
-		$mysql->query("SELECT * FROM synetics_system WHERE NOT synetics_system__ID = 1 ORDER BY synetics_system_name ");
-		$personal_result = $mysql->queryResult();
-		
-		$mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' ORDER BY synetics_data_date LIMIT $pageNo,$maxShown");
-		$data_result = $mysql->queryResult();
                 
                 $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID'");
                 $data_numrows = $mysql->fetchNumRows();
@@ -43,6 +31,19 @@ $sessionid = $_SESSION['user_id'];
                         $data_numrows--;
             
                 }
+	
+		$mysql->query("SELECT * FROM synetics_clients ORDER BY synetics_clients_client");
+		$clients_result = $mysql->queryResult();
+
+		
+		if($_SESSION["user_rights"] > "1"){
+		$smarty->assign('boolsche','true');
+		
+		$mysql->query("SELECT * FROM synetics_system WHERE NOT synetics_system__ID = 1 ORDER BY synetics_system_name ");
+		$personal_result = $mysql->queryResult();
+		
+		$mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' ORDER BY synetics_data_date LIMIT $pageNo,$maxShown");
+		$data_result = $mysql->queryResult();
 		
 		 }else{
 		 $smarty->assign('boolsche','false');
@@ -52,23 +53,7 @@ $sessionid = $_SESSION['user_id'];
 		 
 		 $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$sessionid' ORDER BY synetics_data_date LIMIT $pageNo,$maxShown ");
 		$data_result = $mysql->queryResult();
-                
-                $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$sessionid'");
-                $data_numrows = $mysql->fetchNumRows();
-                
-                while($data_numrows > 0)
-                {
-                    if($intCounter == 0 || $intCounter % $maxShown == 0)
-                    {
-                        $intPage++;
-                        $strLinks.="<a href='?pageID=7&page=$intSet_anzahl'> Seite ".$intPage."</a>&nbsp;";
-                        $intSet_anzahl = $intSet_anzahl + $maxShown;
-                    }
-                        $intCounter++;
-                        $data_numrows--;
-            
-                }
-                
+                         
                 $workerID = $sessionid;
 
 		 } 

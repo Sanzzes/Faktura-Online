@@ -83,8 +83,27 @@ $(document).ready(function(){
    function openP(woID,paID,pgID){
        $.post('index.php?pageID='+paID,{worker_f: woID, page: pgID}, function(p_data){
          $('#inhalte').empty();
-         var d_inhalt = $(p_data).data($('#inhalte'));
+         var d_inhalt = $(p_data).find('#inhalte');
          $('#inhalte').html(d_inhalt);
+         $("#inhalte tr:odd").css({
+		"background-color": "#ccc",
+		"cursor":		"pointer"	
+	});
+	
+	$("#inhalte tr:even").css({
+		"background-color": "#eee",
+		"cursor":		"pointer"	
+		});
+	
+	$("#inhalte tr:first").css("background-color", "#EECB00");	
+	$("#inhalte tr:not(tr:first)").hover(function(){
+	//Mouseover
+	$(this).data("oldbg", $(this).css("background-color"));
+	$(this).css("background-color", "#4050AB");
+	},function() {
+	//Mouseout
+	$(this).css("background-color", $(this).data("oldbg"));
+	});
        })
    }
 
