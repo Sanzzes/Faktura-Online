@@ -5,7 +5,10 @@ if(!isset($year) || empty($year)) {
 $tag = new holiday_calc();
 
           
-                   
+$mysql->query("SELECT * FROM synetics_settings");
+$shownResult = $mysql->fetchRow();
+
+$maxShown = $shownResult['synetics_settings_maxlisten'];
 
 $smarty->assign('user_name', $_SESSION['user_username']);
 $smarty->assign('user_rights', $_SESSION['user_rights']);
