@@ -1,29 +1,63 @@
-<SCRIPT>$(function() {
+<SCRIPT>
+    $(function() {
 	$( "#datepicker1" ).datepicker({ dateFormat: 'mm' });
 	$( "#datepicker2" ).datepicker({ dateFormat: 'yy' });
-});</SCRIPT>
+});
+</SCRIPT>
 <?php
-if(isset($_POST['worker']) && isset($_POST['datepicker1']) && isset($_POST['datepicker2']))
+$todaysDate = time();
+$todayMonth 		= date("m", $todaysDate);
+$todayYear		= date("Y", $todaysDate);
+
+if(isset($_POST['worker_f']) && isset($_POST['datepicker1']) && isset($_POST['datepicker2']))
 {
-	$workerID	= $_POST['worker'];
+	$workerID	= $_POST['worker_f'];
 	$month		= $_POST['datepicker1'];
 	$year		= $_POST['datepicker2'];
-	
 	$datum_start 	= $year . $month . "01";
-	$datum_ende		= $year . $month . "31";
+	$datum_ende	= $year . $month . "31";
+        $smarty->assign('month', $month);
+        $smarty->assign('year', $year);
 }
 else
 {
-	$workerID	= "0";
-	$month		= "0";
-	$year		= "0";	
+        $workerID	= $_SESSION['user_id'];
+	$month		= $todayMonth;
+	$year		= $todayYear;	
 	$datum_start 	= $year . $month . "01";
-	$datum_ende		= $year . $month . "31";
+	$datum_ende     = $year . $month . "31";
+        $smarty->assign('month', $todayMonth);
+        $smarty->assign('year', $todayYear);
 }
+$pageNo = isset($_POST['page']) ? $_POST['page'] : '0';
+$intCounter = 0;
+$intPage = 0;
+$intSet_anzahl = 0;
+$smarty->assign('perID', $workerID);
 error_reporting(E_STRICT);
 $mytime = new timestamp();
-$mysql->query("SELECT * FROM synetics_data INNER JOIN synetics_clients ON synetics_clients.synetics_clients_clientno = synetics_data.synetics_data_client WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start' ORDER BY synetics_data_date");
+
+
+                $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start'");
+                $data_numrows = $mysql->fetchNumRows();
+                
+                while($data_numrows > 0)
+                {
+                    if($intCounter == 0 || $intCounter % $maxShown == 0)
+                    {
+                        $intPage++;
+                        $strLinks.="<a href='Javascript:openP($workerID,$pageID,$intSet_anzahl,$month,$year)'> Seite ".$intPage."</a>&nbsp;";
+                        $intSet_anzahl = $intSet_anzahl + $maxShown;
+                    }
+                        $intCounter++;
+                        $data_numrows--;
+            
+                }
+
+$mysql->query("SELECT * FROM synetics_data INNER JOIN synetics_clients ON synetics_clients.synetics_clients_clientno = synetics_data.synetics_data_client WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start' ORDER BY synetics_data_date LIMIT $pageNo,$maxShown");
 $data_result = $mysql->queryResult();
+
+
 $mysql->query("SELECT * FROM synetics_system WHERE NOT synetics_system__ID = 1 ORDER BY synetics_system_name");
 $personal_result = $mysql->queryResult();
 
@@ -128,6 +162,7 @@ if($_SESSION["user_rights"] > "1"){
 		$i++;
 			
 		}
+        $smarty->assign('pagelink', $strLinks);
 	$smarty->assign('data_lastname', $mypersonal);
 	$smarty->assign('data_main', $mydata);
 	$smarty->display('reisekosten.tpl');
