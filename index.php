@@ -2,9 +2,16 @@
 // Session starten
 session_start ();
 
-if(file_exists('src/config.inc.php')){
+if(!file_exists('src/config.inc.php')){
+   header("Location: install/index.php");
+}
+    
+    
 
-if(isset($_SESSION['logged'])){
+if(empty($_SESSION['logged'])){
+ header("Location: login.html");
+    
+}
 
 define('SMARTY_DIR', 'src/libs/');
 require(SMARTY_DIR . 'Smarty.class.php');
@@ -37,13 +44,7 @@ require_once 'js.php';
 require_once 'functions.php';
 require_once 'admin/admincenter.php';
 $smarty->display('footer.tpl');
-?>
-	<?php
-}
-else{
-	include './login.php';
-}
-}else{
-header("Location: install/index.php");
-}
+
+
+
 ?>

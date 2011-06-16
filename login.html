@@ -1,84 +1,18 @@
-﻿<?php
-if(isset($_POST['username'])){
-    // Session starten
-session_start ();
-include 'src/classes/dbCon.class.php';
-include 'src/config.inc.php';
-$mydb = new DB_MySQL($host, $dbname, $user, $pw);
-$mydb->query("SELECT * FROM synetics_system WHERE synetics_system_username like '$_POST[username]' AND synetics_system_password = MD5('$_POST[password]')");
-
-	if ($mydb->count() > 0) 
-	{ 
-  // Benutzerdaten in ein Array auslesen. 
- 	 $data = $mydb->fetchRow(); 
-
- 	 // Sessionvariablen erstellen und registrieren 
- 	$_SESSION["user_id"] = $data["synetics_system__ID"]; 
-	$_SESSION["user_username"] = $data["synetics_system_username"]; 
- 	$_SESSION["user_name"] = $data["synetics_system_name"]; 
-  	$_SESSION["user_surname"] = $data["synetics_system_surname"];
- 	$_SESSION["user_rights"] = $data["synetics_system_rights"];
-  	$_SESSION["logged"] = $_POST['logged'];
-	
-
-   echo '<tr><td class="auto-style3" style="height: 11px; width: 325px">Sie haben sich erfolgreich Eingeloggt!</td></tr>';
-   echo "<br>Sollten Sie nicht Automatisch weitergeleitet werden <a href='index.php'>Hier klicken</a>";
-   echo '<meta http-equiv="refresh" content="3; URL=index.php">';
-
-	} 
-	else 
-	{
-
-	echo '<tr><td class="auto-style3" style="width: 325px">Falsches Kennwort oder Benutzername!</td></tr>';
-	echo "<br>Sollten Sie nicht Automatisch weitergeleitet werden <a href='index.php'>Hier klicken</a>";
-	echo '<meta http-equiv="refresh" content="3; URL=index.php">';
-
-	} 
-    
-}
-else{
-   
-?>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="application/html" charset="utf-8"></meta>
         <title>Faktura - Login</title>
         <link rel="stylesheet" type="text/css" href="src/css/login.css"></link>
         <script type="text/javascript" language="JavaScript" src="./src/js/jquery/jquery.js"></script>
         <script type="text/javascript" language="JavaScript" src="./src/js/jquery/jquery.tools.min.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('#browsers img[title]').tooltip({
-                    effect: "fade",
-                    opacity: 0.7
-                });
-                $("#message").hide();
-                $("#login").click(function(){
-                    var username = $("#username").attr("value");
-                    var password = $("#password").attr("value");
-                    if (username != "" && password != "")
-                    {
-                        document.forms[0].submit();
-                    }
-                    else
-                    {
-                        $("#message").html("Bitte füllen sie alle Felder aus! <a href=''#' id='hide_block'>Ausblenden</a>");
-                        $("#message").show();
-                    }
-                });
-                $("#hide_block").click(function(){
-                    $("#message").hide();
-		
-                });
-            });
-        </script>
+        <script type="text/javascript" language="JavaScript" src="./src/js/login.js"></script>
 
     </head>
     <body>
 
         <div align="center">
             &nbsp;<p>&nbsp;</p>
-            <form method="POST" action="index.php">
+            <form method="POST" id="login_form" action="">
                 <div align="center">
                     <table border="0" width="437" height="236" cellspacing="0" cellpadding="0" id="login_board">
                         <tr>
@@ -105,7 +39,7 @@ else{
                         <tr>
                             <td height="33" width="164" rowspan="2" valign="top">&nbsp;</td>
                             <td height="14" width="81" valign="top">
-                                <a href="#" id="login"><img src="images/login_login.png" border="0"></a></td>
+                                <img src="images/login_login.png" border="0" id="login"></a</td>
                         </tr>
                         <tr>
                             <td height="19" width="81" valign="top">&nbsp;</td>
@@ -121,4 +55,3 @@ else{
     </body>
 
 </html>
-<?php } ?>
