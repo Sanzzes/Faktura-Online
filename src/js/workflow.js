@@ -1,4 +1,3 @@
-/*
 $(function() {			
     $("#tat_submit").click(function() {
 	$.validator.addMethod("stadtauswahl", function(value, element) 
@@ -10,13 +9,21 @@ $(function() {
 	$('#tat_form1').validate(
 	{
 	rules: {
-			 client: 
+			client: 
 							{required: true, min: 1},
-			 worker:		
+			worker:		
 							{required: true, min: 1},
-			 workplace: 	
-							{required: true, stadtauswahl: true},
-			 datepicker: 	
+			workplace: 	
+							{required: true},
+                                                    
+                        workplace2:                     {required: 
+                                                            function(element)
+                                                            {
+                                                            return $('#workplace').val() == '0'
+                                                            }
+                                                        },
+                        
+			datepicker: 	
 							{required: true, dateDE: true},
 			zeit_1: 
 							{required: true},
@@ -26,13 +33,14 @@ $(function() {
 							{required: true},
 			pause_2: 
 							{required: true},
-			 project:
+			project:
 							{required: true, min: 1}
 			 },
 	messages:	{
 						client: 	"*Bitte Kunden auswählen!",
 						worker: 	"*Bitte Mitarbeiter wählen!",
 						workplace: 	"*Bitte Einsatzort wählen!",
+                                                workplace2:     "*Bitte Einsatzort eingeben!",
 						zeit_1:		"*Fehlt!",
 						zeit_2:		"*Fehlt!",
 						pause_1:	"*Fehlt!",
@@ -63,7 +71,6 @@ $(function() {
      });
     });
   });
-*/
 	function closeRefreshEditTat_12() 
    {
     $('#tat_form1').html("<p align='center'>Seite wird neu geladen<br><img src='images/icon/loader.gif' align='center'></p>")
@@ -124,3 +131,37 @@ $(function() {
 							});
 					});	
 });
+
+
+                $(function ()
+ 	 	{
+                                
+                                $('#execute_del').click(function(){
+                                var delIDS = $(':checkbox').serialize();
+                                if(delIDS != ""){
+ 	 			var confirm = window.confirm('Wirklich Markierte löschen?');
+ 	 			if(confirm ==true)
+ 	 				{
+ 	 				
+ 	 				
+ 				$.ajax({
+ 						type: "POST",
+ 						url:'src/tat_save.inc.php',
+ 						data: "workAction=3&"+ delIDS,
+ 						success: function()
+ 							{ 
+ 							alert("Tätigkeiten wurden gelöscht");
+ 							setTimeout("location.reload(true);",500);
+ 							}
+ 				 		});
+ 	 				}
+ 	 				else
+ 	 				{
+ 	 					alert("Vorgang abgebrochen");
+ 	 				}
+                                   }
+                                   else{
+                                       alert("Nichts Markiert");
+                                   }
+                                })
+ 	 	});

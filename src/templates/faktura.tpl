@@ -4,21 +4,26 @@
 		<form method="POST" action="index.php?pageID=5">
 		<a href="#" id="hide_menu" align="left"><img src="./images/menu/close.png" id="closer_img"></a>
 		<p>
+                   <a href="./logout.php" title="Ausloggen" align="right"><img src="images/icon/logout.png" border="0" align="right"></a>
 		  <a href="javascript:window.print()" title="Seite drucken" align="right"><img src="images/icon/print.png" border="0" align="right"></a>
-		 <a href="./logout.php" title="Ausloggen" align="right"><img src="images/icon/logout.png" border="0" align="right"></a>
+	
  {if $boolsche == "true"}
 		<a href="#" title="Admincenter" id="admin_open">
 		<img src="images/icon/admin.png" border="0" align="right">
 		</a>
 {/if}
 	
-		<input type="text" name="datepicker1" id="datepicker1" size="6" value="Monat">
-		<input type="text" name="datepicker2" id="datepicker2" size="6" value="Jahr">
-					<select size="1" name="worker" id="worker">
+		<input type="text" name="datepicker1" id="datepicker1" size="6" value="{$month}">
+		<input type="text" name="datepicker2" id="datepicker2" size="6" value="{$year}">
+					<select size="1" name="worker_f" id="worker_f">
 			<option selected value="0">Nachname</option>
 			
 {foreach key=key_wert item=item_wert from=$data_lastname}
-			<option value="{$item_wert.synetics_system__ID}">{$item_wert.synetics_system_name}</option>
+                   {if $perID == $item_wert.synetics_system__ID}
+			<option selected value="{$item_wert.synetics_system__ID}">{$item_wert.synetics_system_name}</option>
+                         {else}
+                         <option value="{$item_wert.synetics_system__ID}">{$item_wert.synetics_system_name}</option>
+                    {/if}  
 {/foreach}
 			</select>		
 			<input type="submit" value="" name="zeit_submit" id="zeit_submit" title="Übernehmen">
@@ -90,3 +95,7 @@
 	</tr>
 {/foreach}
 </table>
+<br>
+<div align="center" id="noprint">{$pagelink}</div>
+<br>
+<br>

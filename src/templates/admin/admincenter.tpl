@@ -2,7 +2,7 @@
 			<div id="auswahl_menu">
 				<h3><a href="#">Grundeinstellungen</a></h3>
 				<div>
-				<form id="admin_grund" method="POST" action="./admin/save.changes.php">
+				<form id="admin_grund" method="POST" action="">
 				<table border="0" width="100%">
 			<tr>
 				<td>Kilometersatz
@@ -30,11 +30,11 @@
 				
 				<h3><a href="#">Rechtesystem</a></h3>
 				<div align="center" valign="middle">
-				<form id="admin_grund" method="POST" action="./admin/save.changes.php">
+				<form id="admin_rechte" method="POST" action="">
 				<table border="0" width="100%">
 			<tr>
 				<td>
-				<select id="admin_rights" name="admin_rights">
+				<select id="admin_user" name="admin_user">
 				<option value="0">Bitte wählen</option>
 				
 				{foreach key=key_wert item=item_wert from=$admin_1}
@@ -51,7 +51,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><input type="submit" id="primary_admin" name="primary_admin" value="Übernehmen"></td>
+				<td><input type="submit" id="primary_admin_rights" name="primary_admin_rights" value="Übernehmen"></td>
 			</tr>
 				</table>
 				</form>

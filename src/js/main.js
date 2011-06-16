@@ -80,8 +80,8 @@ $(document).ready(function(){
 });
 
 //Paging
-   function openP(woID,paID,pgID){
-       $.post('index.php?pageID='+paID,{worker_f: woID, page: pgID}, function(p_data){
+   function openP(woID,paID,pgID,dpicker1,dpicker2){
+       $.post('index.php?pageID='+paID,{datepicker1: "0"+dpicker1, datepicker2: dpicker2, worker_f: woID, page: pgID }, function(p_data){
          $('#inhalte').empty();
          var d_inhalt = $(p_data).find('#inhalte');
          $('#inhalte').html(d_inhalt);
@@ -106,5 +106,32 @@ $(document).ready(function(){
 	});
        })
    }
+   
+   
+   	   window.setInterval("zeitanzeige()",1000);
+ 
+	   function zeitanzeige()
+	   {
+		d = new Date ();
+ 
+		h = (d.getHours () < 10 ? '0' + d.getHours () : d.getHours ());
+		m = (d.getMinutes () < 10 ? '0' + d.getMinutes () : d.getMinutes ());
+		s = (d.getSeconds () < 10 ? '0' + d.getSeconds () : d.getSeconds ());
+ 
+		var wochentage = new Array ("Sonntag(Wochenende)", "Montag(Wochentag)", "Dienstag(Wochentag)",
+		"Mittwoch(Wochentag)", "Donnerstag(Wochentag)", "Freitag(Wochentag)", "Samstag(Wochenende)");
+ 
+		var monate = new Array ("Januar", "Februar", "März", "April",
+		"Mai", "Juni", "Juli", "August", "September",
+		"Oktober", "November", "Dezember");
+ 
+		document.getElementById("uhrzeit").innerHTML = 'Heute ist '
+		+ wochentage[d.getDay ()]
+		+ ', der ' + d.getDate () + '. '
+		+ monate[d.getMonth ()] + ' '
+		+ d.getFullYear () +
+		' und es ist jetzt '
+		+ h + ':' + m + ':' + s + ' Uhr!';
+	   }
 
 

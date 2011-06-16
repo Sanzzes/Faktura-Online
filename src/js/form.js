@@ -232,7 +232,6 @@
 				$("#worker").val(json.synetics_data_system_id);
 				$("#client").val(json.synetics_data_client);
 				$("#workplace").val(json.synetics_data_city);
-				//document.getElementsByName("project")[0].value = json.synetics_data_projects_id;
 				$("#hinfahrt_1").val(json.synetics_data_outjourneyex);
 				$("#hinfahrt_2").val(json.synetics_data_outjourneyto);
 				$("#zeit_1").val(json.synetics_data_worktimefrom);
@@ -263,9 +262,9 @@
  	
  	 	  function new_workflow(tat_workflow_id)
  	{
- 
- 		document.getElementsByName("tat_submit")[0].value = "Erstellen";
-		document.getElementsByName("workAction")[0].value = "1";
+                $("#worker").val(tat_workflow_id);
+ 		$("#tat_submit").val("Anlegen");
+		$("#workAction").val("1");
 		$("#tat_form").fadeIn(1500).dialog("open");
  	}
  	 	  
@@ -292,6 +291,7 @@
  	 					alert("Vorgang abgebrochen");
  	 				}
  	 	}
+                
  	 	
  	 	function ustunden(ustunden_id_user)
  	 	{

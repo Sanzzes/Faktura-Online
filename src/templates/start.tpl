@@ -9,4 +9,3 @@
 			</div >
 			</div>
 			<div style="clear:both;margin:30px 0;text-align:center;padding-right:40px"></div>
-                           <div align="center"><a href="logout.php">Ausloggen</a>

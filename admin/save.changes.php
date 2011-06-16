@@ -19,10 +19,10 @@ if($action_a == '1'){
 }
 else{
 	$p_rights		= $_POST['p_rights'] ?:  0;
-	$userID			= $_POST['admin_rights'] ?:  0;
+	$userID			= $_POST['admin_user'] ?:  0;
 	
 	
-	$mysql->query("UPDATE synsetics_system SET synetics_system_rights=$p_rights WHERE synetics_system__ID = $userID");
+	$mysql->query("UPDATE synetics_system SET synetics_system_rights= $p_rights WHERE synetics_system__ID = $userID");
 }
 
 ?>
