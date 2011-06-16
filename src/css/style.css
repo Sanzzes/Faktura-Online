@@ -173,13 +173,52 @@ a {
 .maincontent {
     width: 100%;
     padding: 0 0 0 0;
-    -moz-border-shadow: 10px 10px 5px #888;
-    -webkit-box-shadow: 10px 10px 5px #888;
-    box-shadow: 10px 10px 5px #888;
+    -moz-border-shadow: 10px 5px 5px #888;
+    -webkit-box-shadow: 10px 5px 5px #888;
+    box-shadow: 10px 5px 5px #888;
     -moz-border-radius-bottomright: 10px;
     border-bottom-right-radius: 10px;
     -moz-border-radius-bottomleft: 10px;
     border-bottom-left-radius: 10px;
 }
 
+.footer{
+    min-width: 200px;
+    min-height: 140px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 25px;
+    -moz-border-shadow: 0 0 5px 5px #888;
+    -webkit-box-shadow: 0 0 5px 5px #888;
+    box-shadow: 0 0 5px 5px #888;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-left-radius: 10px;
+    
+}
+.footer h3{
+    margin-left: 25px;
+}
 
+.footer li{
+    margin-left: 25px;
+}
+.footer a{
+    margin-left: 25px;
+}
+.feiertage{
+    margin-left: 25px;
+}
+
+
+.execute_del{
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    float: right;
+}

@@ -37,13 +37,12 @@ $today 		= date("d.m.Y", $todaysDate);
 					<p align="left">
 			</legend></p>
 			<p align="left"></p>
-			<fieldset style="padding: 2; width:785px; height:388px">
+			<fieldset style="padding: 2; width:785px; height:auto">
 			<p align="left">
 			Kunde<select size="1" name="client" id="client">
 			<option selected value="0">Bitte wählen</option>
 			<?php while ($clients=mysql_fetch_array($clients_result, MYSQL_ASSOC))
-					{			
-					 $workplace[$clients['synetics_clients_city']] = $clients['synetics_clients_city'];	
+                                        {
 			?>
 					<option value="<?php echo $clients['synetics_clients_clientno'] ?>">
 					<?php echo utf8_encode($clients['synetics_clients_client'])?>
@@ -56,11 +55,11 @@ $today 		= date("d.m.Y", $todaysDate);
 			Einsatzort<select size="1" name="workplace" id="workplace">
 			<option selected value="0">Bitte wählen</option>
 
-			<?php foreach ($workplace AS $workplace_1 => $workplace_2)
+			<?php while($citys=mysql_fetch_array($city_result, MYSQL_ASSOC))
 					{				
 			?>
-					<option value="<?php echo utf8_encode($workplace_1)?>">
-					<?php echo utf8_encode($workplace_2)?>
+					<option value="<?php echo utf8_encode($citys['synetics_city_name'])?>">
+					<?php echo utf8_encode($citys['synetics_city_name'])?>
 					</option>
 			<?php
 					}
@@ -68,6 +67,8 @@ $today 		= date("d.m.Y", $todaysDate);
 			?>
 
 			</select>*</p>
+                        oder
+                        Stadt eingeben:<input type="text" name="workplace2" id="workplace2">*
 			<p align="left">Projekt<select size="1" name="project" id="project">
 			
 			</select></p>
@@ -79,9 +80,9 @@ $today 		= date("d.m.Y", $todaysDate);
 			<p align="left">Hinfahrt von:&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="text" name="hinfahrt_1" id="hinfahrt_1" size="20">bis<input type="text" name="hinfahrt_2" id="hinfahrt_2"size="20"></p>
 			<p align="left">Einsatzzeit von&nbsp;
-			<input type="text" name="zeit_1" id="zeit_1" size="20">bis<input type="text" name="zeit_2" id="zeit_2" size="20">*</p>
+			<input type="text" name="zeit_1" id="zeit_1" size="20"value="7:30">bis<input type="text" name="zeit_2" id="zeit_2" size="20"value="16:30">*</p>
 			<p align="left">Pause von&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="text" name="pause_1" id="pause_1" size="20">bis<input type="text" name="pause_2" id="pause_2" size="20">*</p>
+			<input type="text" name="pause_1" id="pause_1" size="20"value="12:00">bis<input type="text" name="pause_2" id="pause_2" size="20" value="12:30">*</p>
 			<p align="left">Rückfahrt von&nbsp;&nbsp;&nbsp;
 			<input type="text" name="rueckfahrt_1" id="rueckfahrt_1" size="20">bis<input type="text" name="rueckfahrt_2" id="rueckfahrt_2" size="20"></p>
 			</div>

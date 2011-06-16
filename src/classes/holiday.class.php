@@ -17,20 +17,20 @@ class holiday_calc {
   }
   function getHolidays($year) {
     $time = $this->getEasterSundayTime($year);
-    $days["Neujahr"] = date("d.M", mktime(0, 0, 0, 1, 1, $year));
-    $days["Heilige 3 Koenige"] = date("d.M", mktime(0, 0, 0, 1, 6, $year));
-    $days["Aschermittwoch"] = date("d.M", $time-(86400*46)+3600);
-    $days["Karfreitag"] = date("d.M", $time-(86400*2));
-    $days["Ostersonntag"] = date("d.M", $time);
-    $days["Tag der Arbeit"] = date("d.M", mktime(0, 0, 0, 5, 1, $year));
-    $days["Christi Himmelfahrt"] = date("d.M", $time+(86400*39));
-    $days["Pfingstsonntag"] = date("d.M", $time+(86400*49));
-    $days["Pfingstmontag"] = date("d.M", $time+(86400*50));
-    $days["Fronleichnam"] = date("d.M", $time+(86400*60));
-    $days["Tag der Deutschen Einheit"] = date("d.M", mktime(0, 0, 0, 10, 3, $year));
-    $days["Allerheiligen"] = date("d.M", mktime(0, 0, 0, 11, 1, $year));
-    $days["1.Weihnachtsfeiertag"] = date("d.M", mktime(0, 0, 0, 12, 25, $year));
-    $days["2.Weihnachtsfeiertag"] = date("d.M", mktime(0, 0, 0, 12, 26, $year));
+    $days["Neujahr"] = strftime("%d.%B", mktime(0, 0, 0, 1, 1, $year));
+    $days["Heilige 3 Koenige"] = strftime("%d.%B", mktime(0, 0, 0, 1, 6, $year));
+    $days["Aschermittwoch"] = strftime("%d.%B", $time-(86400*46)+3600);
+    $days["Karfreitag"] = strftime("%d.%B", $time-(86400*2));
+    $days["Ostersonntag"] = strftime("%d.%B", $time);
+    $days["Tag der Arbeit"] = strftime("%d.%B", mktime(0, 0, 0, 5, 1, $year));
+    $days["Christi Himmelfahrt"] = strftime("%d.%B", $time+(86400*39));
+    $days["Pfingstsonntag"] = strftime("%d.%B", $time+(86400*49));
+    $days["Pfingstmontag"] = strftime("%d.%B", $time+(86400*50));
+    $days["Fronleichnam"] = strftime("%d.%B", $time+(86400*60));
+    $days["Tag der Deutschen Einheit"] = strftime("%d.%B", mktime(0, 0, 0, 10, 3, $year));
+    $days["Allerheiligen"] = strftime("%d.%B", mktime(0, 0, 0, 11, 1, $year));
+    $days["1.Weihnachtsfeiertag"] = strftime("%d.%B", mktime(0, 0, 0, 12, 25, $year));
+    $days["2.Weihnachtsfeiertag"] = strftime("%d.%B", mktime(0, 0, 0, 12, 26, $year));
     return $days;
   }
   

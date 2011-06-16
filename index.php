@@ -1,6 +1,7 @@
 <?php
 // Session starten
 session_start ();
+setlocale(LC_ALL,"de_DE", "de_DE.UTF-8", "de_DE@euro", "de", "ge");
 
 if(!file_exists('src/config.inc.php')){
    header("Location: install/index.php");
