@@ -34,10 +34,11 @@ $smarty = new Smarty();
 	
 $smarty->display('index.tpl');
 require_once 'src/config.inc.php';
-$_SESSION['host'] = $host;
-$_SESSION['user'] = $user;
-$_SESSION['pass'] = $pw;
-$_SESSION['dbn'] = $dbname;
+
+define("host", $host);
+define("user", $user);
+define("pw", $pw);
+define("dbname", $dbname);
 
 require_once 'src/classes/class.php';
 $mysql = new DB_MySQL($host, $dbname, $user, $pw);
@@ -45,6 +46,7 @@ require_once 'js.php';
 require_once 'functions.php';
 require_once 'admin/admincenter.php';
 $smarty->display('footer.tpl');
+
 
 
 
