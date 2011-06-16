@@ -37,8 +37,8 @@ require_once 'src/config.inc.php';
 
 define("host", $host);
 define("user", $user);
-define("pw", $pw);
-define("dbname", $dbname);
+define("pass", $pw);
+define("dbn", $dbname);
 
 require_once 'src/classes/class.php';
 $mysql = new DB_MySQL($host, $dbname, $user, $pw);
