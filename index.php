@@ -8,7 +8,7 @@ if(!file_exists('src/config.inc.php')){
     
     
 
-if(empty($_SESSION['logged'])){
+if(empty($_SESSION['user_username'])){
  header("Location: login.html");
     
 }
