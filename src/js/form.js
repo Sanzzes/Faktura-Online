@@ -66,19 +66,9 @@
  		} 		 	
  	}
  	
- 	 	function new_project(p_project_id)
+ 	 	function new_project()
  	{
-			document.getElementsByName("projectname")[0].value = "";
-			document.getElementsByName("drivecost")[0].value = "";
-			document.getElementsByName("client")[0].value = "keiner";
-			document.getElementsByName("projectlead")[0].value = "0";
-			document.getElementsByName("clientcontact")[0].value = "";
-			document.getElementsByName("client")[0].value = "";
-			document.getElementsByName("description")[0].value = "";
-			document.getElementsByName("cost")[0].value = "";
-			document.getElementsByName("cost_rate")[0].value = "";
-			document.getElementsByName("projectID")[0].value = "";
-			document.getElementsByName("drivecost_rate")[0].value = "";
+
 			document.getElementsByName("p_submit")[0].value = "Anlegen";
 			document.getElementsByName("pAction")[0].value = "1";
 			$("#p_form").fadeIn(1500).dialog("open");
@@ -193,8 +183,13 @@
  	
  	function del_personal(p_personal_id,per_name,per_surname,sessionid)
  	{
-			if(sessionid == p_personal_id){
-			alert('Warnung:\n\nDu kannst dich nicht selber löschen');
+			if(sessionid == p_personal_id || p_personal_id == 1){
+                             if(p_personal_id == 1){
+                             alert('Warnung:\n\nDu kannst den Admin nicht löschen');
+                             }
+                             else{
+                             alert('Warnung:\n\nDu kannst dich nicht selber löschen');
+                             }
 			}
 			else{
 					var confirm = window.confirm('Wirklich löschen?\n\n'+'Zu löschende Person:\nName:'+per_name+'\nVorname:'+per_surname);
@@ -298,7 +293,7 @@
  	 			$.ajax({
  						type: "post",
  						url:"src/ustunden.inc.php",
- 						data: "userid="+ustunden_id_user,
+ 						data: "ajax=get_ustunden_all&userid="+ustunden_id_user,
  						success: function(ustundeng)
  							{ 
  							alert("--Überstundenrechner--\t\t\n\nDu hast:" +ustundeng );

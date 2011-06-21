@@ -217,8 +217,11 @@ a {
 
 
 .execute_del{
-    margin-right: 15px;
     cursor: pointer;
     font-size: 1.5em;
     float: right;
+}
+
+.ustunden{
+    margin-right: 25px;
 }

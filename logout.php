@@ -1,14 +1,11 @@
-<?php 
-// Wird ausgeführt um mit der Ausgabe des Headers zu warten. 
-ob_start (); 
+<?php
 
-session_start (); 
-session_unset (); 
-session_destroy (); 
+//close the session and close mysql connection
+session_start();
+session_unset();
+session_destroy();
+$_SESSION=array();
 mysql_close();
-
-header ("Location: index.php"); 
-ob_end_flush (); 
-
-
+//go back to index.php
+header("Location: index.php");
 ?> 

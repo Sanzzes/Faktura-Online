@@ -165,3 +165,22 @@ $(function() {
                                    }
                                 })
  	 	});
+                
+               
+$(document).ready(function(){
+    
+    var userid = $('#worker_f').val();
+    var thismonth = $('#datepicker1').val();
+    var thisyear = $('#datepicker2').val();
+    
+    
+    $.ajax({
+                    type: "post",
+                    url:"src/ustunden.inc.php",
+                    data: "ajax=get_ustunden_month&userid="+userid+"&thisyear="+thisyear+"&thismonth="+thismonth,
+                    success: function(ustundeng)
+                            { 
+                            $('#ustunden_month').html("Überstunden Monat "+thismonth+" im Jahr "+thisyear+" sind: "+ustundeng);
+                            }
+                    });
+})

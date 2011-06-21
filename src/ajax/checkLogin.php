@@ -1,6 +1,5 @@
 <?php
-// Session starten
-session_start ();
+session_start();
 include '../classes/dbCon.class.php';
 include '../config.inc.php';
 $mydb = new DB_MySQL($host, $dbname, $user, $pw);

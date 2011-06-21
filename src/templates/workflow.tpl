@@ -14,8 +14,8 @@ style="border-collapse: collapse">
  		<img src="images/icon/uestd.png" border="0" align="right">
 		</a>
  	<a href="javascript:new_workflow({$perID})" title="Neue Tätigkeit anlegen">
-		<img src="images/icon/newclient.png" border="0" align="right">
-	</a>
+		<img src="images/icon/newclient.png" border="0" align="right"></a>
+        <div class="execute_del" id="execute_del"><img src="images/icon/delselected.png"></div>
 	{if $boolsche == "true"}
 		<a href="#"title="Admincenter" id="admin_open"><img src="images/icon/admin.png" border="0" align="right"></a>
 		 {/if}
@@ -88,7 +88,7 @@ style="border-collapse: collapse">
 	{/foreach}
 </table>
 <br>
-<div align="center" id="noprint">{$pagelink}</div><div class="execute_del" id="execute_del">Markierte Löschen</div>
+<div align="center" id="noprint">{$pagelink}</div><div id="ustunden_month" class="ustunden" align="right"></div>
 <br>
 <br>
 					 

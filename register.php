@@ -16,8 +16,8 @@ $user = mysql_fetch_array($result);
 
 //Check if all fields filled
 if($username == "" || $password == "" || $vorname == "" || $nachname == ""){
-echo "Sie haben nicht alle Felder ausgefüllt";
-echo "<a href='newuser.php'><br> Zurück</a>";
+echo "Sie haben nicht alle Felder ausgefÃ¼llt";
+echo "<a href='newuser.php'><br> ZurÃ¼ck</a>";
 }
 else 
 {
@@ -57,7 +57,7 @@ if ($l_num == 0){
 	<td height="230" width="434" valign="top" align="center">
    <?php 
    echo "Fehler beim Anlegen der Benutzer.<br>\n"; 
-   echo "<a href='newuser.php'> Zurück</a>"; 
+   echo "<a href='newuser.php'> ZurÃ¼ck</a>"; 
    ?>
    	<p align="center"></td>
 		</tr>
@@ -66,8 +66,8 @@ if ($l_num == 0){
   }  
 }
 else {
-	echo "Leider ist die Benutzerkennung schon vergeben bitte wählen Sie einen anderen<br>";
-	echo "<a href='newuser.php'> Zurück</a>";
+	echo "Leider ist die Benutzerkennung schon vergeben bitte wï¿½hlen Sie einen anderen<br>";
+	echo "<a href='newuser.php'> Zurï¿½ck</a>";
 }
 }
 
