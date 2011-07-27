@@ -201,7 +201,7 @@ while ($personal=mysql_fetch_array($personal_result, MYSQL_ASSOC))
 						
 		$i++;
 		}
- 
+        $smarty->assign('year_month', $mytime->showmonth());
         $smarty->assign('pagelink', $strLinks);
 	$smarty->assign('data_lastname', $mypersonal);
 	$smarty->assign('data_main', $mydata);

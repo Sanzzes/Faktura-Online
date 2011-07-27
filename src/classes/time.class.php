@@ -118,6 +118,17 @@
 		}
                 
              
+           function showmonth()
+           {
+               for($i = 1; $i < 13; $i++)
+               {
+                   if($i < 10)
+                   $month[$i] = "0".$i;
+                   else
+                   $month[$i] = $i;
+               }
+               return $month;
+           }
 		
 		
 	}

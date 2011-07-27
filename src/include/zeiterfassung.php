@@ -27,6 +27,27 @@ else
         $smarty->assign('month', $todayMonth);
         $smarty->assign('year', $todayYear);
 }
+$pageNo = isset($_POST['page']) ? $_POST['page'] : '0';
+$intCounter = 0;
+$intPage = 0;
+$intSet_anzahl = 0;
+
+$mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start'");
+                $data_numrows = $mysql->fetchNumRows();
+                
+                while($data_numrows > 0)
+                {
+                    if($intCounter == 0 || $intCounter % $maxShown == 0)
+                    {
+                        $intPage++;
+                        $strLinks.="<a href='Javascript:openP($workerID,$pageID,$intSet_anzahl,$month,$year)'> Seite ".$intPage."</a>&nbsp;";
+                        $intSet_anzahl = $intSet_anzahl + $maxShown;
+                    }
+                        $intCounter++;
+                        $data_numrows--;
+            
+               }
+           
 $process        =   $_POST['process_id'];
 if($_SESSION["user_rights"] > "1"){ 
 		$smarty->assign('boolsche','true');
@@ -41,13 +62,13 @@ if($process != 0){
 $mysql->query("SELECT * FROM synetics_data
 INNER JOIN synetics_clients 
 	ON (synetics_clients.synetics_clients_clientno = synetics_data.synetics_data_client)
-WHERE synetics_data.synetics_data_system_id = '$workerID' AND synetics_data.synetics_data_date < '$datum_ende' AND synetics_data.synetics_data_date > '$datum_start' AND synetics_data_process_id = '$process' ORDER BY synetics_data.synetics_data_date");
+WHERE synetics_data.synetics_data_system_id = '$workerID' AND synetics_data.synetics_data_date < '$datum_ende' AND synetics_data.synetics_data_date > '$datum_start' AND synetics_data_process_id = '$process' ORDER BY synetics_data.synetics_data_date LIMIT $pageNo,$maxShown");
 
 }else{
 $mysql->query("SELECT * FROM synetics_data
 INNER JOIN synetics_clients 
 	ON (synetics_clients.synetics_clients_clientno = synetics_data.synetics_data_client)
-WHERE synetics_data.synetics_data_system_id = '$workerID' AND synetics_data.synetics_data_date < '$datum_ende' AND synetics_data.synetics_data_date > '$datum_start' ORDER BY synetics_data.synetics_data_date");
+WHERE synetics_data.synetics_data_system_id = '$workerID' AND synetics_data.synetics_data_date < '$datum_ende' AND synetics_data.synetics_data_date > '$datum_start' ORDER BY synetics_data.synetics_data_date LIMIT $pageNo,$maxShown");
 
 }
 $data_result = $mysql->queryResult();
@@ -78,17 +99,19 @@ while ($process=mysql_fetch_array($process_result, MYSQL_ASSOC))
     $myprocess[$i]['processname'] = $process['synetics_process_name'];
     $myprocess[$i]['processid'] = $process['synetics_process_id'];
 $i++;   
-}
-					
+}				
 $mydata = array();
 $i = 0;
 		while($data=mysql_fetch_array($data_result, MYSQL_ASSOC))
 		{
+                        $mysql->query("SELECT synetics_system_name FROM synetics_system WHERE synetics_system__ID = '".$data['synetics_data_system_id']."'");
+                        $worker = $mysql->fetchArray();
 			$mysql->query("SELECT * FROM synetics_settings");
 			$settings 	= $mysql->fetchArray();
 			$mysql->query("SELECT * FROM synetics_projects WHERE synetics_projects__ID = '".$data['synetics_data_projects_id']."'");
 			$projects = $mysql->fetchArray();
-
+                        $mysql->query("SELECT synetics_process_name FROM synetics_process WHERE synetics_process_id = '".$data['synetics_data_process_id']."'");
+                        $process = $mysql->fetchArray();
 			
 			if($projects == 0){
 			$projects['synetics_projects_projectname'] = '/';
@@ -142,6 +165,8 @@ $i = 0;
                 $ustunden               =       $azpause - $dayWorkTime;
 		
 		$mydata[$i]['date'] 					= $datum['date'];
+                $mydata[$i]['process'] 					= $process['synetics_process_name'];
+                $mydata[$i]['synetics_data_worker']                         = utf8_encode($worker['synetics_system_name']);
 		$mydata[$i]['synetics_projects_projectname'] 		= utf8_encode($projects['synetics_projects_projectname']);
 		$mydata[$i]['time_hin'] 						= $time_hin['time'];
 		$mydata[$i]['time_hin2'] 						= $time_hin2['time'];
@@ -158,9 +183,13 @@ $i = 0;
                 $mydata[$i]['ustunden_synetics']                        = $mytime->timersSTD($ustunden);
 		$i++;
 		}
+                
+        $smarty->assign('year_month', $mytime->showmonth());
 	$smarty->assign('data_lastname', $mypersonal);
 	$smarty->assign('data_main', $mydata);
         $smarty->assign('data_process', $myprocess);
-	$smarty->display('zeiterfassung.tpl');
+        $smarty->assign('pagelink', $strLinks);
         $smarty->assign('perID', $workerID);
+	$smarty->display('zeiterfassung.tpl');
+        
 ?>
