@@ -11,6 +11,8 @@ $(function() {
 	rules: {
 			client: 
 							{required: true, min: 1},
+                        process:		
+							{required: true, min: 1},
 			worker:		
 							{required: true, min: 1},
 			workplace: 	
@@ -39,6 +41,7 @@ $(function() {
 	messages:	{
 						client: 	"*Bitte Kunden auswählen!",
 						worker: 	"*Bitte Mitarbeiter wählen!",
+                                                process: 	"*Bitte Rechnungsstelle wählen!",
 						workplace: 	"*Bitte Einsatzort wählen!",
                                                 workplace2:     "*Bitte Einsatzort eingeben!",
 						zeit_1:		"*Fehlt!",

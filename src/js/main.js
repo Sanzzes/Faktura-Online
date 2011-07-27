@@ -53,7 +53,7 @@ $(document).ready(function(){
 	$("#inhalte tr:not(tr:first)").hover(function(){
 	//Mouseover
 	$(this).data("oldbg", $(this).css("background-color"));
-	$(this).css("background-color", "#4050AB");
+	$(this).css("background-color", "#C6E2FF");
 	},function() {
 	//Mouseout
 	$(this).css("background-color", $(this).data("oldbg"));

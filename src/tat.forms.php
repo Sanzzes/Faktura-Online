@@ -14,9 +14,9 @@ $today 		= date("d.m.Y", $todaysDate);
 					<td >
 			<p align="left">Stammdaten</p>
 		</legend>
-			<fieldset style="padding: 2; width:785px; height:103px">
+			<fieldset style="padding: 2; width:785px; height:160px">
 			<p align="left">
-			Mitarbeiter
+			Mitarbeiter:
 			<select size="1" name="worker" id="worker">
 			<option selected value="0">Bitte wählen</option>
 			<?php foreach ($myworkers AS $worker_id => $worker_name)
@@ -24,6 +24,21 @@ $today 		= date("d.m.Y", $todaysDate);
 			?>
 					<option value="<?php echo $worker_id; ?>">
 					<?php echo $worker_name?>
+					</option>
+			<?php
+					}
+	
+			?>
+			</select>*</p>
+                        			<p align="left">
+			Rechnungsstelle:
+			<select size="1" name="process" id="process">
+			<option selected value="0">Bitte wählen</option>
+			<?php foreach ($myprocess AS $process_id => $process_name)
+					{				
+			?>
+					<option value="<?php echo $process_id; ?>">
+					<?php echo $process_name?>
 					</option>
 			<?php
 					}

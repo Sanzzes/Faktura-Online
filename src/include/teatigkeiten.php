@@ -62,6 +62,12 @@ $mytime = new timestamp();
                         $data_numrows--;
             
                 }
+                $mysql->query("SELECT * FROM synetics_process");
+                $process_result = $mysql->queryResult();
+                while($process=mysql_fetch_array($process_result,MYSQL_ASSOC))
+                {
+                    $myprocess[$process['synetics_process_id']] = $process['synetics_process_name'];
+                }
 
 		
 		if($_SESSION["user_rights"] > "1"){

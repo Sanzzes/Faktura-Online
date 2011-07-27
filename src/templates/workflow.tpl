@@ -54,7 +54,6 @@ style="border-collapse: collapse">
 		<td ><font size="1">AZ - Pause</td>
 		<td ><font size="1">Fahrzt.</td>
 		<td ><font size="1">Gesamt-Zeit</td>
-                <td ><font size="1">Mehr Std.</td>
 		<td id="noprint"><font size="1">Funktion</td>
 	</tr>
 	{foreach key=key_wert_main item=item_wert_main from=$data_main}
@@ -74,7 +73,6 @@ style="border-collapse: collapse">
 		<td ><font size="1">{$item_wert_main.azpause}</td>
 		<td ><font size="1">{$item_wert_main.fahrtzeit}</td>
 		<td ><font size="1">{$item_wert_main.allhour}</td>
-		<td ><font size="1">{$item_wert_main.ustunden_synetics}</td>
 		<td id="noprint">
 			<a href="javascript:edit_workflow({$item_wert_main.synetics_data_ID})"
 			title="Person ändern u. Anzeigen">

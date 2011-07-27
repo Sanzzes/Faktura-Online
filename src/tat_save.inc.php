@@ -48,6 +48,7 @@ $art_2_2			=	$_POST['art_2_2'];
 $art_3_1			=	$_POST['art_3_1'];
 $art_3_2			=	$_POST['art_3_2'];
 $kilometer			=	$_POST['kilometer'];
+$process			=	$_POST['process'];
 
 //Datum in einen MySQL String umwandeln
 $datum_1	=	$mytime->timestamp_german2mysql($datepicker);
@@ -115,7 +116,7 @@ $project = 0;
 					synetics_data_wtpause,synetics_data_whichcar,synetics_data_text,
 					synetics_data_km,
 					synetics_data_returnjourneyex,synetics_data_returnjourneyto,synetics_data_system_id,
-					synetics_data_projects_id,synetics_data_foodoverall";
+					synetics_data_projects_id,synetics_data_foodoverall,synetics_data_process_id";
 			
 			foreach($l_arr AS $l_key => $l_val){
 				$l_query .= ",".$l_key;
@@ -123,7 +124,7 @@ $project = 0;
 			$l_query .= ") ";
 			$l_query .= "VALUES ('$datum_1','$client','$workplace','$hin_1','$hin_2',
 					'$z_1','$z_2','$p_1','$p_2','$wagen','$rechnungstext','$kilometer',
-					'$rb_1','$rb_2','$worker','$project' ,'$notthere'";
+					'$rb_1','$rb_2','$worker','$project' ,'$notthere','$process'";
 			
 			foreach($l_arr AS $l_key => $l_val){
 				$l_query .= ",'$l_val'";
@@ -144,7 +145,7 @@ $project = 0;
 					synetics_data_text='$rechnungstext',
 					synetics_data_km=$kilometer,
 					synetics_data_returnjourneyex=$rb_1,synetics_data_returnjourneyto=$rb_2,
-					synetics_data_projects_id=$project, synetics_data_foodoverall=$notthere";
+					synetics_data_projects_id=$project, synetics_data_foodoverall=$notthere, synetics_data_process_id=$process";
 			
 			foreach($l_arr AS $l_key => $l_val){
 				$l_query_edit .= ",".$l_key."=".$l_val;

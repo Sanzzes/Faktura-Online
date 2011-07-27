@@ -225,6 +225,7 @@
 		   success: function(json){		   	
 				$("#datepicker").val(json.synetics_data_date);
 				$("#worker").val(json.synetics_data_system_id);
+                                $("#process").val(json.synetics_data_process_id);
 				$("#client").val(json.synetics_data_client);
 				$("#workplace").val(json.synetics_data_city);
 				$("#hinfahrt_1").val(json.synetics_data_outjourneyex);
