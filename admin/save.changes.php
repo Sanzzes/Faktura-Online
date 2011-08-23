@@ -25,13 +25,18 @@ if ($action_a == '1') {
     $mysql->query("UPDATE synetics_system SET synetics_system_rights= $p_rights WHERE synetics_system__ID = $userID");
 } else {
     $process_name = $_POST['process_new'];
-    $mysql->query("SELECT * FROM synetics_process WHERE synetics_process_name = '" . $process_name . "'");
+    if ($process_name == ""){
+        echo 0;
+    }
+    else{
+        $mysql->query("SELECT * FROM synetics_process WHERE synetics_process_name = '" . $process_name . "'");
 
     if ($mysql->count() > 0) {
-        echo "0";
+        echo 1;
     } else {
         $mysql->query("INSERT INTO synetics_process (synetics_process_name) VALUES('$process_name')");
-        echo "1";
+        echo 2;
+    }
     }
 }
 ?>

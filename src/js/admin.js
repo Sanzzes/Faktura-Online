@@ -12,8 +12,11 @@ $(document).ready(function() {
         ({
             navigation: true,
             autoHeight: false
-        })
-        .find("#primary_admin").button();
+        });
+        $("#primary_admin").button();
+        $("#primary_admin_rights").button();
+        $("#primary_admin_process").button();
+        loadfields();
 
         return false;
     });
@@ -76,13 +79,19 @@ $(function() {
     $("#primary_admin_process").click(function() {
         $.post("./admin/save.changes.php",$('#admin_process').serialize(), function(data){
             if(data == 0){
-                alert("Fehler: Existiert bereits!")
+                alert("Fehler: Leeres Feld")
             }
-            else
-            {
+            else { 
+                if(data == 1){ 
+                    alert("Fehler: Bereits vorhanden!")   
+                }
+            else{
                 alert("Erfolgreich angelegt")
+                loadfields();
+                $('#process_new').val("");
                 
-            }
+            };
+           };
         });
         return false;
     });
@@ -97,19 +106,13 @@ $(function() {
         $.ajax({
             type: "POST",
             url: "./src/ajax/process.inc.php",
-            data: "ajax=edit_process&processID= "+process+"&processCName="+processName+"&process_action="+processAction,
-            success: function() {	
-                $('#edit_process').html("<div id='message'></div>").dialog({
-                    width: 400, 
-                    height: 200, 
-                    resizable: false
-                });
-                $('#message').html("<h2 align='center'>Erfolgreich ausgeführt!</h2>")
-                .append("<a href='javascript:closeRefreshAdmin()'><h4 align='center'>Schließen<h4></a>")
-                .hide()
-                .fadeIn(1500, function() {
-                    $('#message');
-                });
+            data: "ajax=edit_process&processID="+process+"&processCName="+processName+"&process_action="+processAction,
+            success: function() {
+                $('#edit_process').fadeOut(1500).dialog("close");
+                alert("Die Rechnungsstelle wurde editiert!");
+                loadfields();
+                
+                
             }
         });
         return false;
@@ -156,7 +159,7 @@ function edit_process()
     $.ajax({
         type: "POST",
         url: "./src/ajax/process.inc.php",
-        data: "ajax=edit_process&processID= "+process,
+        data: "ajax=edit_process&processID="+process+"&process_action=0",
         dataType: "json",
         success: function(json){
                                 
@@ -181,7 +184,7 @@ function del_process()
             success: function(processName)							 							
             { 							
                 alert("Rechnungsstelle: "+processName+", wurde gelöscht"); 							
-                setTimeout("location.reload(true);",500); 							
+                loadfields();							
             }					 	
         }); 		 				
     } 		 			
@@ -189,5 +192,13 @@ function del_process()
     { 		 			
         alert("Vorgang abgebrochen"); 		 			
     } 
+}
+
+function loadfields()
+{   $("#processID").empty();
+    $("#processID").load("./src/ajax/getAdmin.php",
+							{
+							ajax: "process"	
+							});
 }
         	

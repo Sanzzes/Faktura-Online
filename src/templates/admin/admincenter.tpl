@@ -66,15 +66,12 @@
                                 <br>Vorhanden:
                                 <br>
                                 <select id="processID">
-                                    {foreach key=key_wert item=item_wert from=$process}
-                                        <option value="{$item_wert.processid}">{$item_wert.processname}</option>
-                                    {/foreach}
                                 </select>
                                <a href="javascript:del_process()" title="Löschen"> <img src="images/icon/del.png" border="0"></a>
                                <a href="javascript:edit_process()" title="Editieren"><img src="images/icon/edit.png" border="0"></a>
                                 <br>
                                 Neu Anlegen:
-                                <input type="text"name="process_new" id="process_new"></input>
+                                <input type="text" name="process_new" id="process_new" value=""></input>
                                 <input type="hidden" id="action_a"name="action_a" size="4" value="3">
                             </td>
                         </tr> 
