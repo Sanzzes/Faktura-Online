@@ -1,9 +1,4 @@
-<SCRIPT>
-    $(function() {
-	$( "#datepicker1" ).datepicker({ dateFormat: 'mm' });
-	$( "#datepicker2" ).datepicker({ dateFormat: 'yy' });
-});
-</SCRIPT>
+
 <?php
 $todaysDate = time();
 $todayMonth 		= date("m", $todaysDate);
@@ -29,7 +24,7 @@ else
         $smarty->assign('month', $todayMonth);
         $smarty->assign('year', $todayYear);
 }
-$pageNo = isset($_POST['page']) ? $_POST['page'] : '0';
+$pageNo = isset($_GET['page']) ? $_GET['page'] : '0';
 $intCounter = 0;
 $intPage = 0;
 $intSet_anzahl = 0;
@@ -55,7 +50,7 @@ $mytime = new timestamp();
                     if($intCounter == 0 || $intCounter % $maxShown == 0)
                     {
                         $intPage++;
-                        $strLinks.="<a href='Javascript:openP($workerID,$pageID,$intSet_anzahl,$month,$year)'> Seite ".$intPage."</a>&nbsp;";
+                        $strLinks.="<a href='Javascript:openP($pageID,$intSet_anzahl)'> Seite ".$intPage."</a>&nbsp;";
                         $intSet_anzahl = $intSet_anzahl + $maxShown;
                     }
                         $intCounter++;

@@ -80,8 +80,8 @@ $(document).ready(function(){
 });
 
 //Paging
-   function openP(woID,paID,pgID,dpicker1,dpicker2){
-       $.post('index.php?pageID='+paID,{datepicker1: "0"+dpicker1, datepicker2: dpicker2, worker_f: woID, page: pgID }, function(p_data){
+   function openP(paID,pgID){
+       $.post('index.php?pageID='+paID+'&page='+pgID,$("#form_zeiten").serialize(), function(p_data){
          $('#inhalte').empty();
          var d_inhalt = $(p_data).find('#inhalte');
          $('#inhalte').html(d_inhalt);
@@ -133,5 +133,29 @@ $(document).ready(function(){
 		' und es ist jetzt '
 		+ h + ':' + m + ':' + s + ' Uhr!';
 	   }
+           
+           $(document).ready(function(){
+    
+    var userid = $('#worker_f').val();
+    var thismonth = $('#datepicker1').val();
+    var thisyear = $('#datepicker2').val();
+    var process = $('#process_id').val();
+    
+    
+    $.ajax({
+                    type: "post",
+                    url:"src/ustunden.inc.php",
+                    data: "ajax=get_stunden_process&userid="+userid+"&thisyear="+thisyear+"&thismonth="+thismonth+"&thisprocess="+process,
+                    success: function(stundeng)
+                            { 
+                            $('#stunden_month_ges').html(stundeng);
+                            }
+                    });
+})
+
+function alertBox(text)
+{
+    alert(text);
+}
 
 

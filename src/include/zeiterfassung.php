@@ -27,12 +27,19 @@ else
         $smarty->assign('month', $todayMonth);
         $smarty->assign('year', $todayYear);
 }
-$pageNo = isset($_POST['page']) ? $_POST['page'] : '0';
+$pageNo = isset($_GET['page']) ? $_GET['page'] : '0';
 $intCounter = 0;
 $intPage = 0;
 $intSet_anzahl = 0;
-
-$mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start'");
+$process        =   $_POST['process_id'];
+if($process != 0)
+{
+    $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start' AND synetics_data_process_id = '$process'");
+}
+else
+{
+    $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start'");
+}
                 $data_numrows = $mysql->fetchNumRows();
                 
                 while($data_numrows > 0)
@@ -40,15 +47,13 @@ $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$wor
                     if($intCounter == 0 || $intCounter % $maxShown == 0)
                     {
                         $intPage++;
-                        $strLinks.="<a href='Javascript:openP($workerID,$pageID,$intSet_anzahl,$month,$year)'> Seite ".$intPage."</a>&nbsp;";
+                        $strLinks.="<a href='Javascript:openP($pageID,$intSet_anzahl)'> Seite ".$intPage."</a>&nbsp;";
                         $intSet_anzahl = $intSet_anzahl + $maxShown;
                     }
                         $intCounter++;
                         $data_numrows--;
             
                }
-           
-$process        =   $_POST['process_id'];
 if($_SESSION["user_rights"] > "1"){ 
 		$smarty->assign('boolsche','true');
 		 }else{

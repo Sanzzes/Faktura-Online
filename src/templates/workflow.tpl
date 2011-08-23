@@ -3,7 +3,7 @@
        style="border-collapse: collapse">
     <tr id="noprint">
         <td height="auto" width="auto" colspan="13">
-            <form method="POST" action="index.php?pageID=7" id="menu">
+            <form method="POST" action="index.php?pageID=7" id="form_zeiten">
                 <a href="#" id="hide_menu" align="left"><img src="./images/menu/close.png" id="closer_img"></a>
                 <p>
                     <a href="./logout.php" title="Ausloggen">

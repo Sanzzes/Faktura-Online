@@ -1,7 +1,7 @@
 <table border="0" width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse">
 		<tr id="noprint">
 		<td>
-		<form method="POST" action="index.php?pageID=6">
+		<form method="POST" action="index.php?pageID=6" id="form_zeiten">
 		<a href="#" id="hide_menu" align="left"><img src="./images/menu/close.png" id="closer_img"></a>
 		<p>
 		  <a href="javascript:window.print()" title="Seite drucken" align="right"><img src="images/icon/print.png" border="0" align="right"></a>
@@ -89,6 +89,6 @@
 	</tr>	
 	{/foreach}
 	</table>
-        <br><div align="center" id="noprint">{$pagelink}</div>
+        <br><div align="center" id="noprint">{$pagelink}</div><div id="stunden_month_ges" class="ustunden" align="right"></div>
         <br>
         <br>
