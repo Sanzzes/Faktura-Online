@@ -5,10 +5,14 @@ session_start ();
 //Set Time to Local German Time much formats 4 various servers
 setlocale(LC_ALL,"de_DE", "de_DE.UTF-8", "de_DE@euro", "de", "ge");
 //Mobile Geräte abfangen
-if(eregi("Android", $_SERVER["HTTP_USER_AGENT"])){
+
+$android = stristr($_SERVER["HTTP_USER_AGENT"], 'Android');
+$iphone = stristr($_SERVER["HTTP_USER_AGENT"], 'iPhone');
+
+if(stristr($_SERVER["HTTP_USER_AGENT"], 'Android')){
     header("Location: mobile/");
 }
-if(eregi("iPhone", $_SERVER["HTTP_USER_AGENT"])){
+if(stristr($_SERVER["HTTP_USER_AGENT"], 'iPhone')){
     header("Location: mobile/");
 }
 
@@ -19,10 +23,9 @@ if(!file_exists('src/config.inc.php')){
 //Check if config File Exist if not go to Setup Page
 if(!file_exists('src/config.inc.php')){
    header("Location: install/index.php");
-}
-    
+}  
 //Check if Session is not Empty if empty go to Login
-if(empty($_SESSION['user_username'])){
+if(empty($_SESSION['user_username']) && $android == false && $iphone == false){
  header("Location: login.html");
     
 }

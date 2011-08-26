@@ -29,21 +29,30 @@ else
         $smarty->assign('month', $todayMonth);
         $smarty->assign('year', $todayYear);
 }
-$pageNo = isset($_POST['page']) ? $_POST['page'] : '0';
+$pageNo = isset($_GET['page']) ? $_GET['page'] : '0';
 $intCounter = 0;
 $intPage = 0;
 $intSet_anzahl = 0;
+$process        =   $_POST['process_id'];
 $smarty->assign('perID', $workerID);
 
-                $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start'");
-                $data_numrows = $mysql->fetchNumRows();
+if($process != 0)
+{
+    $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start' AND synetics_data_process_id = '$process'");
+}
+else
+{
+    $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start'");
+}
+
+$data_numrows = $mysql->fetchNumRows();
                 
                 while($data_numrows > 0)
                 {
                     if($intCounter == 0 || $intCounter % $maxShown == 0)
                     {
                         $intPage++;
-                        $strLinks.="<a href='Javascript:openP($workerID,$pageID,$intSet_anzahl,$month,$year)'> Seite ".$intPage."</a>&nbsp;";
+                        $strLinks.="<a href='Javascript:openP($pageID,$intSet_anzahl)'> Seite ".$intPage."</a>&nbsp;";
                         $intSet_anzahl = $intSet_anzahl + $maxShown;
                     }
                         $intCounter++;
@@ -57,12 +66,29 @@ if($_SESSION["user_rights"] > "1"){
 		 $smarty->assign('boolsche','false');
 		 } 
 //error_reporting(E_STRICT);
+$smarty->assign('perID', $workerID);
+$smarty->assign('procID', $process);
+
 $mytime = new timestamp();
+
+if($process != 0){
+$mysql->query("SELECT * FROM synetics_data
+INNER JOIN synetics_clients 
+	ON (synetics_clients.synetics_clients_clientno = synetics_data.synetics_data_client)
+WHERE synetics_data.synetics_data_system_id = '$workerID' AND synetics_data.synetics_data_date < '$datum_ende' AND synetics_data.synetics_data_date > '$datum_start' AND synetics_data_process_id = '$process' ORDER BY synetics_data.synetics_data_date LIMIT $pageNo,$maxShown");
+
+}else{
 $mysql->query("SELECT * FROM synetics_data
 INNER JOIN synetics_clients 
 	ON (synetics_clients.synetics_clients_clientno = synetics_data.synetics_data_client)
 WHERE synetics_data.synetics_data_system_id = '$workerID' AND synetics_data.synetics_data_date < '$datum_ende' AND synetics_data.synetics_data_date > '$datum_start' ORDER BY synetics_data.synetics_data_date LIMIT $pageNo,$maxShown");
+
+}
 $data_result = $mysql->queryResult();
+
+$mysql->query("SELECT * FROM synetics_process");
+$process_result = $mysql->queryResult();
+
 $mysql->query("SELECT * FROM synetics_system WHERE NOT synetics_system__ID = 1 ORDER BY synetics_system_name");
 $personal_result = $mysql->queryResult();
 
@@ -74,6 +100,16 @@ while ($personal=mysql_fetch_array($personal_result, MYSQL_ASSOC))
 						}
 					$i++;
 					}
+                                        
+$i = 0;
+$myprocess = array();
+while ($process=mysql_fetch_array($process_result, MYSQL_ASSOC))
+{
+    $myprocess[$i]['processname'] = $process['synetics_process_name'];
+    $myprocess[$i]['processid'] = $process['synetics_process_id'];
+$i++;   
+}
+                                        
 $mydata = array();
 $i = 0;
 		while($data=mysql_fetch_array($data_result, MYSQL_ASSOC))
@@ -169,8 +205,10 @@ $i = 0;
 		$i++;
 		}
 	//var_dump($mydata);
+        $smarty->assign('year_month', $mytime->showmonth());
         $smarty->assign('pagelink', $strLinks);
 	$smarty->assign('data_lastname', $mypersonal);
+        $smarty->assign('data_process', $myprocess);
 	$smarty->assign('data_main', $mydata);
 	$smarty->display('faktura.tpl');
 		?>
