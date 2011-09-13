@@ -23,22 +23,22 @@
 			<tr id="0">
 		
 		<td height="23" width="100%" align="left" valign="top" colspan="7"><img src="./images/icon/plus.png" id="img_0" border="0"  align="left"></a>
-		 <a href="#" id="0"" class="aufklappen" style="text-decoration: none;">
+		 <a href="#" id="0" class="aufklappen" style="text-decoration: none;">
 			Nicht Kategorisiert</a></td>		
 	</tr>
 	<tr id="insert_0" style="display:none;">
 	</tr>
 	{foreach key=key_tu item=wert_tu from=$data_client}
-		<tr id="{$wert_tu.synetics_clients_clientno}">
+		<tr id="{$wert_tu.synetics_clients_id}">
 		
 		<td height="23" width="100%" align="left" valign="top" colspan="7"><img src="./images/icon/plus.png" id="img_{$wert_tu.synetics_clients_clientno}" border="0"  align="left"></a>
-		 <a href="#" id="{$wert_tu.synetics_clients_clientno}"" class="aufklappen" style="text-decoration: none;">
+		 <a href="#" id="{$wert_tu.synetics_clients_id}" class="aufklappen" style="text-decoration: none;">
                     {$wert_tu.synetics_clients_client}
                 </a>
 </td>		
 	</tr>
 	
-	<tr id="insert_{$wert_tu.synetics_clients_clientno}" style="display:none;">
+	<tr id="insert_{$wert_tu.synetics_clients_id}" style="display:none;">
 	</tr>
 	{/foreach}
 </table>

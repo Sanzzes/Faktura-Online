@@ -27,27 +27,28 @@ else{
 }
 
 if(empty($_POST['client2'])){
-$client                      = 	utf8_decode($_POST['client']);   
+$client                      = 	$_POST['client'];   
 }
 else{
-  $client = utf8_decode($_POST['client2']);
   $client2 = utf8_decode($_POST['client2']);
   $mydb->query("SELECT * FROM synetics_clients WHERE synetics_clients_client = '$client2'");
   $cityNums = $mydb->fetchNumRows();
   if($cityNums < 1){
   $mydb->query("INSERT INTO synetics_clients (synetics_clients_client,synetics_clients_clientno) values('$client2','999999')");
+  $client = mysql_insert_id();
+  
   }
 }
 if(empty($_POST['project2'])){
-$project                     = 	utf8_decode($_POST['project']);   
+$project                     = 	$_POST['project'];   
 }
 else{
-  $project = utf8_decode($_POST['project2']);
   $project2 = utf8_decode($_POST['project2']);
-  $mydb->query("SELECT * FROM synetics_city WHERE synetics_city_name = '$project2'");
+  $mydb->query("SELECT * FROM synetics_projects WHERE synetics_projects_projectname = '$project2'");
   $cityNums = $mydb->fetchNumRows();
   if($cityNums < 1){
-  $mydb->query("INSERT INTO synetics_city (synetics_city_name) values('$project2')");
+  $mydb->query("INSERT INTO synetics_projects (synetics_projects_projectname,synetics_clients_synetics_clients_clientno) values('$project2','$client')");
+  $project = mysql_insert_id();
   }
 }
 

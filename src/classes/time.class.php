@@ -98,8 +98,11 @@
 			
 		function ustunden($time)
 		{
-			$times_1 = date("i",$time);
+                        $times_1 = date("i",$time);
 			$times_2 = intval($time /60 /60);
+                        if($time < 0 && $times_2 == 0){
+                            $times_1 = "-".$times_1;
+                        }
                         
 			
 			$ustunden_output = $times_2  . " Std " .  $times_1 . " Min ";

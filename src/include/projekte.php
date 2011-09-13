@@ -24,7 +24,7 @@ if($_SESSION["user_rights"] > "1"){
 		 
 $i = 0;
 while ($clients=mysql_fetch_array($clients_result, MYSQL_ASSOC)){
-		$meinekunden[$clients['synetics_clients_clientno']] = utf8_encode($clients['synetics_clients_client']);
+		$meinekunden[$clients['synetics_clients_id']] = utf8_encode($clients['synetics_clients_client']);
 		
 			foreach($clients as $key => $value){
 			$myclients[$i][$key] = utf8_encode($value);
