@@ -16,7 +16,8 @@ $(document).ready(function() {
 		     }
 		   }
 		 });
-	})
+	});
+        //$('#inhalte').dataTable();
 });
 
 function check_submit()

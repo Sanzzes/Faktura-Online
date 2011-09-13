@@ -31,7 +31,7 @@ $today 		= date("d.m.Y", $todaysDate);
 			?>
 			</select>*</p>
                         			<p align="left">
-			Rechnungsstelle:
+			Kostenstelle:
 			<select size="1" name="process" id="process">
 			<option selected value="0">Bitte wählen</option>
 			<?php foreach ($myprocess AS $process_id => $process_name)
@@ -59,14 +59,18 @@ $today 		= date("d.m.Y", $todaysDate);
 			<?php while ($clients=mysql_fetch_array($clients_result, MYSQL_ASSOC))
                                         {
 			?>
-					<option value="<?php echo $clients['synetics_clients_clientno'] ?>">
+					<option value="<?php echo $clients['synetics_clients_id'] ?>">
 					<?php echo utf8_encode($clients['synetics_clients_client'])?>
 					</option>
 			<?php
 					}
 	
 			?>
-			</select><p align="left">
+			</select>
+                        </p>
+                        oder
+                        Kunde eingeben:<input type="text" name="client2" id="client2">*
+                        <p align="left">
 			Einsatzort<select size="1" name="workplace" id="workplace">
 			<option selected value="0">Bitte wählen</option>
 
@@ -85,8 +89,10 @@ $today 		= date("d.m.Y", $todaysDate);
                         oder
                         Stadt eingeben:<input type="text" name="workplace2" id="workplace2">*
 			<p align="left">Projekt<select size="1" name="project" id="project">
-			
+                         <option selected value="0">Bitte wählen</option>
 			</select></p>
+                        oder
+                        Projekt eingeben:<input type="text" name="project2" id="project2">*
 			<p align="left">Verpflegungspauschale
 			<input type="radio" value="1"  name="foodoverall">Ja
 			<input type="radio" checked name="foodoverall" value="0">Nein</p>

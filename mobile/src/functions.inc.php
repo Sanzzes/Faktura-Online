@@ -12,9 +12,8 @@ class mobile_class {
         $_SESSION["user_id"] = $session_array[0];
         $_SESSION["user_username"] = $session_array[1];
         $_SESSION["user_name"] = $session_array[2];
-        $_SESSION["user_surname"] = $session_array[3];
-        $_SESSION["user_rights"] = $session_array[4];
-        $_SESSION["logged"] = $session_array[5];
+        $_SESSION["user_rights"] = $session_array[3];
+        $_SESSION["logged"] = $session_array[4];
 
     }
 

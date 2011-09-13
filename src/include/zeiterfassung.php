@@ -66,13 +66,13 @@ $mytime = new timestamp();
 if($process != 0){
 $mysql->query("SELECT * FROM synetics_data
 INNER JOIN synetics_clients 
-	ON (synetics_clients.synetics_clients_clientno = synetics_data.synetics_data_client)
+	ON (synetics_clients.synetics_clients_id = synetics_data.synetics_data_client)
 WHERE synetics_data.synetics_data_system_id = '$workerID' AND synetics_data.synetics_data_date < '$datum_ende' AND synetics_data.synetics_data_date > '$datum_start' AND synetics_data_process_id = '$process' ORDER BY synetics_data.synetics_data_date LIMIT $pageNo,$maxShown");
 
 }else{
 $mysql->query("SELECT * FROM synetics_data
 INNER JOIN synetics_clients 
-	ON (synetics_clients.synetics_clients_clientno = synetics_data.synetics_data_client)
+	ON (synetics_clients.synetics_clients_id = synetics_data.synetics_data_client)
 WHERE synetics_data.synetics_data_system_id = '$workerID' AND synetics_data.synetics_data_date < '$datum_ende' AND synetics_data.synetics_data_date > '$datum_start' ORDER BY synetics_data.synetics_data_date LIMIT $pageNo,$maxShown");
 
 }

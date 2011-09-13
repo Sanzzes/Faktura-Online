@@ -54,7 +54,7 @@
                 </table>
                 <table border="0" width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse" id="inhalte">
 		<tr id="print">	
-                <td align="center"> <font size="1">Miarbeiter</font></td>
+                <td align="center"> <font size="1">Mitarbeiter</font></td>
 		<td align="center"> <font size="1">Datum</font></td>
 		<td align="center"> <font size="1">Hinfahrt von</font></td>
 		<td align="center"> <font size="1">bis</font></td>

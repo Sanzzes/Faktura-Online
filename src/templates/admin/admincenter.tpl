@@ -57,7 +57,7 @@
             </form>
         </div>	
 
-        <h3><a href="#">Verrechnungsstelle</a></h3>
+        <h3><a href="#">Kostenstelle</a></h3>
             <div>
                 <form id="admin_process" method="POST">
                     <table border="0" width="100%">

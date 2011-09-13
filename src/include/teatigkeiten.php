@@ -111,7 +111,7 @@ while ($personal=mysql_fetch_array($personal_result, MYSQL_ASSOC))
 
 	 	$kunde = $data['synetics_data_client'];
 		$mysql->query("SELECT * FROM synetics_clients 
-		WHERE synetics_clients_clientno = '$kunde'");
+		WHERE synetics_clients_id = '$kunde'");
 		$kunde_result = $mysql->fetchRow();
 
 		$projekt = $data['synetics_data_projects_id'];

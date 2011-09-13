@@ -13,7 +13,6 @@ $mytime			=	new timestamp();
 //Daten des Formulars abfangen mit $_POST
 $datepicker                     =	$_POST['datepicker'];
 $worker				=	$_POST['worker'];
-$client				=	$_POST['client'];
 if(empty($_POST['workplace2'])){
 $workplace                      = 	utf8_decode($_POST['workplace']);   
 }
@@ -27,7 +26,31 @@ else{
   }
 }
 
-$project			=	$_POST['project'];
+if(empty($_POST['client2'])){
+$client                      = 	utf8_decode($_POST['client']);   
+}
+else{
+  $client = utf8_decode($_POST['client2']);
+  $client2 = utf8_decode($_POST['client2']);
+  $mydb->query("SELECT * FROM synetics_clients WHERE synetics_clients_client = '$client2'");
+  $cityNums = $mydb->fetchNumRows();
+  if($cityNums < 1){
+  $mydb->query("INSERT INTO synetics_clients (synetics_clients_client,synetics_clients_clientno) values('$client2','999999')");
+  }
+}
+if(empty($_POST['project2'])){
+$project                     = 	utf8_decode($_POST['project']);   
+}
+else{
+  $project = utf8_decode($_POST['project2']);
+  $project2 = utf8_decode($_POST['project2']);
+  $mydb->query("SELECT * FROM synetics_city WHERE synetics_city_name = '$project2'");
+  $cityNums = $mydb->fetchNumRows();
+  if($cityNums < 1){
+  $mydb->query("INSERT INTO synetics_city (synetics_city_name) values('$project2')");
+  }
+}
+
 $foodoverall                    =	$_POST['foodoverall'];
 $hinfahrt_1                     =	$_POST['hinfahrt_1'];
 $hinfahrt_2                     =	$_POST['hinfahrt_2'];

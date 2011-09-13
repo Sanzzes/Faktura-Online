@@ -31,7 +31,7 @@
                 <input type="text" name="datepicker2" id="datepicker2" size="6" value="{$year}">
                 Mitarbeiter:
                 <select size="1" name="worker_f" id="worker_f">
-                    <option selected value="0">Nachname</option>
+                    <option selected value="0">Benutzername</option>
                     {foreach key=key_wert item=item_wert from=$data_lastname}
                         {if $perID == $item_wert.synetics_system__ID}
                             <option selected value="{$item_wert.synetics_system__ID}">{$item_wert.synetics_system_name}</option>

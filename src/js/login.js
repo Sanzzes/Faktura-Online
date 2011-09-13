@@ -22,11 +22,13 @@ $(document).ready(function(){
                             else{
                                 
                                 $('#message').show().fadeTo(200,0.1,function(){
-                                    $(this).html("Das Login war nicht erfolgreich<br>Password oder Username Falsch").fadeTo(900,1);
+                                    $(this).html("Login war nicht erfolgreich<br>Passwort oder Benutzername Falsch").fadeTo(900,1);
                                 });
                             }
                         });
                         return false;
                          }); 
+                       $('#username').focus();
+                       
                     });
 

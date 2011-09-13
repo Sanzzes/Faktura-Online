@@ -54,8 +54,9 @@
     </tr>
 </table>
 <table border="0" width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse" id="inhalte">
+     <thead>
     <tr id="print">
-        <td height="34" width="92" align="center"><font size="1">Datum</font></td>
+        <th height="34" width="92" align="center"><font size="1">Datum</font></th>
         <td height="34" width="93" align="center"><font size="1">Kunde</font></td>
         <td height="34" width="93" align="center"><font size="1">Ort</font></td>
         <td height="34" width="53" align="center" valign="top"><font size="1">Hin fahrt von</font></td>
@@ -78,6 +79,8 @@
         <td height="34" width="55" align="center"><font size="1">Taxi</font></td>
         <td height="34" width="57" align="center"><font size="1">Bewirtung</font></td>
     </tr>
+     </thead>
+     <tbody>
     {foreach key=key_wert_main item=item_wert_main from=$data_main}
 
         <tr id="print" align="center" >
@@ -106,6 +109,7 @@
 
         </tr>
     {/foreach}
+    </tbody>
 </table>
 <br>
 <div align="center" id="noprint">{$pagelink}</div>
