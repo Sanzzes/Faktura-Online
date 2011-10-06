@@ -9,8 +9,10 @@ if(isset($_POST['worker_f']) && isset($_POST['datepicker1']) && isset($_POST['da
 	$workerID	= $_POST['worker_f'];
 	$month		= $_POST['datepicker1'];
 	$year		= $_POST['datepicker2'];
-	$datum_start 	= $year . $month . "01";
-	$datum_ende	= $year . $month . "31";
+	$datum_begin 	= $year . $month . "01";
+	$datum_end	= $year . $month . "31";
+        $datum_start    = strtotime($datum_begin);
+        $datum_ende     = strtotime($datum_end);
         $smarty->assign('month', $month);
         $smarty->assign('year', $year);
 }
@@ -19,8 +21,10 @@ else
         $workerID	= $_SESSION['user_id'];
 	$month		= $todayMonth;
 	$year		= $todayYear;	
-	$datum_start 	= $year . $month . "01";
-	$datum_ende     = $year . $month . "31";
+	$datum_begin 	= $year . $month . "01";
+	$datum_end	= $year . $month . "31";
+        $datum_start    = strtotime($datum_begin);
+        $datum_ende     = strtotime($datum_end);
         $smarty->assign('month', $todayMonth);
         $smarty->assign('year', $todayYear);
 }

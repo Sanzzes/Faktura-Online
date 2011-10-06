@@ -10,10 +10,10 @@
 	
 	if ($l_num == 0)
 	{
-		echo "true";
+		echo true;
 	}
 	else 
 	{
-		echo "false";
+		echo false;
 	}
 ?>

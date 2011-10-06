@@ -129,54 +129,25 @@ a {
 .head {
     padding: 0px;
     margin: 0px 0px 0px 0px;
-    height: 60px;
+    height: 65px;
     width: 100%;
     text-align: center;
-    -moz-border-shadow: 10px 10px 5px #888;
-    -webkit-box-shadow: 10px 10px 5px #888;
-    box-shadow: 10px 10px 5px #888;
-    -moz-border-radius-bottomright: 10px;
-    border-bottom-right-radius: 10px;
-    -moz-border-radius-topright: 10px;
-    border-top-right-radius: 10px;
+
 }
 
-.head h2 {
-    text-align: left;
-    color: #fff;
-    font-size: 1.6em;
-    float: left;
-}
-
-.head ul {
-    float: right;
-    list-style-type: none;
-    padding: 8px;
-}
-
-.head ul li {
-    display: inline;
-    font-weight: bold;
-}
-
-.head ul li a {
-    color: black;
-    text-decoration: none;
-}
-
-.head a{
-    margin-left: 1%;
-    
-}
 
 
 
 .maincontent {
     width: 100%;
     padding: 0 0 0 0;
-    -moz-border-shadow: 10px 5px 5px #888;
-    -webkit-box-shadow: 10px 5px 5px #888;
-    box-shadow: 10px 5px 5px #888;
+    -moz-border-shadow: 0 0 5px 5px #888;
+    -webkit-box-shadow: 0 0 5px 5px #888;
+    box-shadow: 0 0 5px 5px #888;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;
     -moz-border-radius-bottomright: 10px;
     border-bottom-right-radius: 10px;
     -moz-border-radius-bottomleft: 10px;
@@ -184,10 +155,8 @@ a {
 }
 
 .footer{
-    min-width: 200px;
-    min-height: 140px;
+
     float: left;
-    margin-left: 10px;
     margin-top: 25px;
     -moz-border-shadow: 0 0 5px 5px #888;
     -webkit-box-shadow: 0 0 5px 5px #888;
@@ -226,3 +195,10 @@ a {
 .ustunden{
     margin-right: 25px;
 }
+
+/* Button Styles */
+.blue {background-color: #CCCCCC; color: #141414;}
+.blue:hover {background-color: #00c0ff; color: #ffffff;}
+
+.green {background-color: #CCCCCC; color: #141414;}
+.green:hover{background-color: #8aff00; color: #ffffff;}

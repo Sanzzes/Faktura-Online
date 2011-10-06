@@ -140,7 +140,7 @@ $project = 0;
 					synetics_data_wtpause,synetics_data_whichcar,synetics_data_text,
 					synetics_data_km,
 					synetics_data_returnjourneyex,synetics_data_returnjourneyto,synetics_data_system_id,
-					synetics_data_projects_id,synetics_data_foodoverall,synetics_data_process_id";
+					synetics_data_projects_id,synetics_data_foodoverall,synetics_data_hotelgarni,synetics_data_process_id";
 			
 			foreach($l_arr AS $l_key => $l_val){
 				$l_query .= ",".$l_key;
@@ -148,7 +148,7 @@ $project = 0;
 			$l_query .= ") ";
 			$l_query .= "VALUES ('$datum_1','$client','$workplace','$hin_1','$hin_2',
 					'$z_1','$z_2','$p_1','$p_2','$wagen','$rechnungstext','$kilometer',
-					'$rb_1','$rb_2','$worker','$project' ,'$notthere','$process'";
+					'$rb_1','$rb_2','$worker','$project' ,'$notthere','$hotelgarni','$process'";
 			
 			foreach($l_arr AS $l_key => $l_val){
 				$l_query .= ",'$l_val'";
@@ -169,7 +169,7 @@ $project = 0;
 					synetics_data_text='$rechnungstext',
 					synetics_data_km=$kilometer,
 					synetics_data_returnjourneyex=$rb_1,synetics_data_returnjourneyto=$rb_2,
-					synetics_data_projects_id=$project, synetics_data_foodoverall=$notthere, synetics_data_process_id=$process";
+					synetics_data_projects_id=$project, synetics_data_foodoverall=$notthere, synetics_data_hotelgarni=$hotelgarni, synetics_data_process_id=$process";
 			
 			foreach($l_arr AS $l_key => $l_val){
 				$l_query_edit .= ",".$l_key."=".$l_val;

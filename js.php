@@ -23,4 +23,5 @@
 <link rel="stylesheet" type="text/css" href="./src/css/print.css">
 <link rel="stylesheet" type="text/css" href="./src/css/nivo-slider.css">
 <link rel="stylesheet" type="text/css" href="./src/css/jquery.selectbox.css">
+<link rel="stylesheet" type="text/css" href="./src/css/menu.css">
 <link rel="shortcut icon" type="image/x-icon" href="icon.ico">

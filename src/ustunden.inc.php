@@ -88,8 +88,10 @@ switch ($_POST['ajax']) {
             $month = $_POST['thismonth'];
             $year = $_POST['thisyear'];
             $process = $_POST['thisprocess'];
-            $datum_start = $year . $month . "01";
-            $datum_ende = $year . $month . "31";
+            $datum_begin 	= $year . $month . "01";
+            $datum_end	= $year . $month . "31";
+            $datum_start    = strtotime($datum_begin);
+            $datum_ende     = strtotime($datum_end);
 
 
 
@@ -109,7 +111,7 @@ switch ($_POST['ajax']) {
                 $arbeitszeit = $data_user['synetics_data_worktimeto'] - $data_user['synetics_data_worktimefrom'];
                 $pause = $data_user['synetics_data_wtpause'] - $data_user['synetics_data_pause'];
                 $fahrtzeit = $hinfahrtzeit + $zurückfahrzeit;
-                $overhours[$data_user['synetics_data_date']] += $arbeitszeit;
+                $overhours[$data_user['synetics_data_date']] += $arbeitszeit + $fahrtzeit - $pause;
             }
 
             foreach ($overhours as $overhour) {

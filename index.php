@@ -4,18 +4,19 @@ session_start ();
 
 //Set Time to Local German Time much formats 4 various servers
 setlocale(LC_ALL,"de_DE", "de_DE.UTF-8", "de_DE@euro", "de", "ge");
+date_default_timezone_set('Europe/Berlin');
 //Mobile Geräte abfangen
 
 $android = stristr($_SERVER["HTTP_USER_AGENT"], 'Android');
 $iphone = stristr($_SERVER["HTTP_USER_AGENT"], 'iPhone');
-
+/*
 if(stristr($_SERVER["HTTP_USER_AGENT"], 'Android')){
     header("Location: mobile/");
 }
 if(stristr($_SERVER["HTTP_USER_AGENT"], 'iPhone')){
     header("Location: mobile/");
 }
-
+*/
 
 if(!file_exists('src/config.inc.php')){
    header("Location: install/index.php");
@@ -25,10 +26,18 @@ if(!file_exists('src/config.inc.php')){
    header("Location: install/index.php");
 }  
 //Check if Session is not Empty if empty go to Login
+if(empty($_SESSION['user_username'])){
+ header("Location: login.html");
+    
+}
+
+/* With Mobiel Check!
 if(empty($_SESSION['user_username']) && $android == false && $iphone == false){
  header("Location: login.html");
     
 }
+ */
+
 
 //Begin main coding.
 //Initialize SMARTY Library/Plugin
@@ -62,6 +71,8 @@ require_once 'src/classes/class.php';
 
 //create class mysql from DB_MySQL
 $mysql = new DB_MySQL($host, $dbname, $user, $pw);
+$system = new system();
+$time = new timestamp();
 require_once 'js.php';
 require_once 'functions.php';
 require_once 'admin/admincenter.php';

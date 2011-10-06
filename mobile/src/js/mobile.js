@@ -11,8 +11,14 @@ $(function() {
             rules: {
                 client: 
                 {
-                    required: true, 
-                    min: 1
+                    required: true
+                },
+                client2:                        {
+                    required: 
+                    function(element)
+                    {
+                        return $('#client').val() == '0'
+                    }
                 },
                 process:		
                 {
@@ -60,14 +66,21 @@ $(function() {
                 },
                 project:
                 {
-                    required: true, 
-                    min: 1
+                    required: true
+                },
+                project2:                     {
+                    required: 
+                    function(element)
+                    {
+                        return $('#project').val() == '0'
+                    }
                 }
             },
             messages:	{
-                client: 	"*Bitte Kunden auswählen!",
+                client: 	"*Bitte Kunde auswählen!",
+                client2:        "*Bitte Kunde eingeben!",
                 worker: 	"*Bitte Mitarbeiter wählen!",
-                process: 	"*Bitte Rechnungsstelle wählen!",
+                process: 	"*Bitte Kostenstellestelle wählen!",
                 workplace: 	"*Bitte Einsatzort wählen!",
                 workplace2:     "*Bitte Einsatzort eingeben!",
                 zeit_1:		"*Fehlt!",
@@ -75,7 +88,8 @@ $(function() {
                 pause_1:	"*Fehlt!",
                 pause_2:	"*Fehlt!",
                 datepicker: 	"*Kein Datum angegeben!",
-                project:	"*Bitte Projekt wählen!"
+                project:	"*Bitte Projekt wählen!",
+                project2:	"*Bitte Projekt eingeben!"
             },
             submitHandler: function()
             {

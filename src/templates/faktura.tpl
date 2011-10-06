@@ -2,7 +2,7 @@
     <tr id="noprint">
         <td>
             <form method="POST" id="form_zeiten" action="index.php?pageID=5">
-                <a href="#" id="hide_menu" align="left"><img src="./images/menu/close.png" id="closer_img"></a>
+
                 <p>
                     <a href="./logout.php" title="Ausloggen" align="right"><img src="images/icon/logout.png" border="0" align="right"></a>
                     <a href="javascript:window.print()" title="Seite drucken" align="right"><img src="images/icon/print.png" border="0" align="right"></a>
@@ -55,33 +55,33 @@
 </table>
 <table border="0" width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse" id="inhalte">
     <tr id="print" align="center">
-        <td ><font size="1">Datum</font></td>
-        <td ><font size="1">Kunde</font></td>
-        <td ><font size="1">Ort</font></td>
-        <td ><font size="1">Projekt</font></td>
-        <td ><font size="1">Hinfahrt von</font></td>
-        <td ><font size="1">bis</font></td>
-        <td ><font size="1">Arbeitszeit von</font></td>
-        <td ><font size="1">bis</font></td>
-        <td ><font size="1">Rückfahrt von</font></td>
-        <td ><font size="1">bis</font></td>
-        <td ><font size="1">Pause</font></td>
-        <td ><font size="1">AZ<br>-<br>Pause</font></td>
-        <td ><font size="1">Fahrzt.</font></td>
-        <td ><font size="1">Dienstl. Tagessatz</font></td>
-        <td ><font size="1">Dienstl. Std.satz</font></td>
-        <td ><font size="1">Fahrt Pauschal</font></td>
-        <td ><font size="1">Fahrt Std.satz</font></td>
-        <td ><font size="1">KM</font></td>
-        <td ><font size="1">KM Satz</font></td>
-        <td ><font size="1">Hotel</font></td>
-        <td ><font size="1">Spesen</font></td>
-        <td ><font size="1">Bahn</font></td>
-        <td ><font size="1">Flug</font></td>
-        <td ><font size="1">Mietwagen</font></td>
-        <td ><font size="1">Parken</font></td>
-        <td ><font size="1">Str-/U-/ S-Bahn</font></td>
-        <td ><font size="1">Taxi</font></td>
+        <td ><font size="1"><u>Datum</ul></u></font></td>
+        <td ><font size="1"><u>Kunde</u></font></td>
+        <td ><font size="1"><u>Ort</u></font></td>
+        <td ><font size="1"><u>Projekt</u></font></td>
+        <td ><font size="1"><u>Hinfahrt von</u></font></td>
+        <td ><font size="1"><u>bis</u></font></td>
+        <td ><font size="1"><u>Arbeitszeit von</u></font></td>
+        <td ><font size="1"><u>bis</u></font></td>
+        <td ><font size="1"><u>Rückfahrt von</u></font></td>
+        <td ><font size="1"><u>bis</u></font></td>
+        <td ><font size="1"><u>Pause</u></font></td>
+        <td ><font size="1"><u>AZ<br>-<br>Pause</u></font></td>
+        <td ><font size="1"><u>Fahrzt.</u></font></td>
+        <td ><font size="1"><u>Dienstl. Tagessatz</u></font></td>
+        <td ><font size="1"><u>Dienstl. Std.satz</u></font></td>
+        <td ><font size="1"><u>Fahrt Pauschal</u></font></td>
+        <td ><font size="1"><u>Fahrt Std.satz</u></font></td>
+        <td ><font size="1"><u>KM</u></font></td>
+        <td ><font size="1"><u>KM Kosten</u></font></td>
+        <td ><font size="1"><u>Hotel</u></font></td>
+        <td ><font size="1"><u>Spesen</u></font></td>
+        <td ><font size="1"><u>Bahn</u></font></td>
+        <td ><font size="1"><u>Flug</u></font></td>
+        <td ><font size="1"><u>Mietwagen</u></font></td>
+        <td ><font size="1"><u>Parken</u></font></td>
+        <td ><font size="1"><u>Str-/U-/ S-Bahn</u></font></td>
+        <td ><font size="1"><u>Taxi</u></font></td>
     </tr>
     {foreach key=key_wert_main item=item_wert_main from=$data_main}
         <tr id="print" align="center">
@@ -115,6 +115,46 @@
 
         </tr>
     {/foreach}
+</table>
+<table border="1" width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse">
+    <tr id="print" align="center" style="background-color: #EECB00">
+        <td ><font size="1"><u>Pause</u></font></td>
+        <td ><font size="1"><u>Arbeitsleistung</u></font></td>
+        <td ><font size="1"><u>Fahrzeit Summe.</u></font></td>
+        <td ><font size="1"><u>Dienstl. Tagessatz Summe</u></font></td>
+        <td ><font size="1"><u>Dienstl. Std.satz Summe</u></font></td>
+        <td ><font size="1"><u>Fahrt Pauschal Summe</u></font></td>
+        <td ><font size="1"><u>Fahrt Std.Satz</u></font></td>
+        <td ><font size="1"><u>KM Summe</u></font></td>
+        <td ><font size="1"><u>KM Kosten Summe</u></font></td>
+        <td ><font size="1"><u>Hotel Summe</u></font></td>
+        <td ><font size="1"><u>Spesen Summe</u></font></td>
+        <td ><font size="1"><u>Bahn Summe</u></font></td>
+        <td ><font size="1"><u>Flug Summe</u></font></td>
+        <td ><font size="1"><u>Mietwagen Summe</u></font></td>
+        <td ><font size="1"><u>Parken Summe</u></font></td>
+        <td ><font size="1"><u>Str-/U-/ S-Bahn Summe</u></font></td>
+        <td ><font size="1"><u>Taxi Summe</u></font></td>
+    </tr>
+    <tr id="print" align="center">
+        <td >{$fakturapause}</td>
+        <td >{$fakturaazpause}</td>
+        <td >{$fakturafahrt}</td>
+        <td >/</td>
+        <td >/</td>
+        <td >/</td>
+        <td >/</td>
+        <td >{$fakturall.km}</td>
+        <td >{$fakturall.kmcost}€</td>
+        <td >{$fakturall.synetics_data_hotel}€</td>
+        <td >{$fakturall.synetics_data_foodoverall}€</td>
+        <td >{$fakturall.synetics_data_train}€</td>
+        <td >{$fakturall.synetics_data_airfare}€</td>
+        <td >{$fakturall.synetics_data_rentalcar}€</td>
+        <td >{$fakturall.synetics_data_parking}€</td>
+        <td >{$fakturall.synetics_data_citytrain}€</td>
+        <td >{$fakturall.synetics_data_taxi}€</td>
+    </tr>
 </table>
 <br>
 <div align="center" id="noprint">{$pagelink}</div>

@@ -15,8 +15,8 @@
 		<td height="183" width="310" rowspan="2" valign="top">
 
                 <h3>Logged in as:</h3>
-                <li>Benutzer:<font color="blue"> {$user_name} </font></li>
-                <li>Name: {$user_nach},{$user_vor}</li>
+                <li>Benutzer:<font color="blue"> {$smarty.session.user_username} </font></li>
+                <li>Name: {$user_nach}</li>
                 <li>Rechte:<font color="orange"> {if $user_rights == 1}Normal{else}Admin{/if}</font></li>
                 <br><a href="logout.php">Ausloggen</a>
 

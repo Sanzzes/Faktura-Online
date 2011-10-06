@@ -94,8 +94,8 @@ $today 		= date("d.m.Y", $todaysDate);
                         oder
                         Projekt eingeben:<input type="text" name="project2" id="project2">*
 			<p align="left">Verpflegungspauschale
-			<input type="radio" value="1"  name="foodoverall">Ja
-			<input type="radio" checked name="foodoverall" value="0">Nein</p>
+			<input type="radio" value="1"  id="foodoverall"name="foodoverall">Ja
+			<input type="radio" id="foodoverall"name="foodoverall" value="0">Nein</p>
 			<div id=zeiten">
 			<p align="left"><b>Zeiten:</b></p>
 			<p align="left">Hinfahrt von:&nbsp;&nbsp;&nbsp;&nbsp;
@@ -123,8 +123,8 @@ $today 		= date("d.m.Y", $todaysDate);
 			<p align="left">
 			Hotel mit Frühstück
 			<select size="1" name="hotelgarni" id="hotelgarni">
-			<option value="1">Nein</option>
-			<option value="2">Ja</option>
+			<option value="0">Nein</option>
+			<option value="1">Ja</option>
 			</select>
 			</p>
 			<p align="left">

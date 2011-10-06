@@ -2,7 +2,6 @@
 <table border="0" width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse">
 	<tr>	
 <td height="23" width="auto" colspan="13">
-			<a href="#" id="hide_menu" align="right"><img src="./images/menu/close.png" id="closer_img"></a>
 	<p><a href="./logout.php" title="Ausloggen">
 		<img src="images/icon/logout.png" border="0" align="right">
 	</a>		

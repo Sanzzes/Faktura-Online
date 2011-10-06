@@ -79,10 +79,7 @@ switch($_POST["ajax"])
 					}
 					if ($index === 'synetics_data_date') {
 						$date = $l_result['synetics_data_date'];
-						$l_result['synetics_data_date'] = 	sprintf("%02d.%02d.%04d",
-      	                        						 	substr($date, 6, 2),
-          	                   								substr($date, 4, 2),
-          	                   					 			substr($date, 0, 4));	
+						$l_result['synetics_data_date'] = 	date("d.m.Y", $date);
 					}
 					
 					

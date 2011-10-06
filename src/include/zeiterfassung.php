@@ -12,8 +12,10 @@ if(isset($_POST['worker_f']) && isset($_POST['datepicker1']) && isset($_POST['da
 	$workerID	= $_POST['worker_f'];
 	$month		= $_POST['datepicker1'];
 	$year		= $_POST['datepicker2'];
-	$datum_start 	= $year . $month . "01";
-	$datum_ende	= $year . $month . "31";
+	$datum_begin 	= $year."-".$month."-01";
+	$datum_end	= $year."-".$month."-31";
+        $datum_start    = strtotime($datum_begin);
+        $datum_ende     = strtotime($datum_end);
         $smarty->assign('month', $month);
         $smarty->assign('year', $year);
 }
@@ -22,8 +24,10 @@ else
         $workerID	= $_SESSION['user_id'];
 	$month		= $todayMonth;
 	$year		= $todayYear;	
-	$datum_start 	= $year . $month . "01";
-	$datum_ende     = $year . $month . "31";
+	$datum_begin 	= $year."-".$month."-01";
+	$datum_end	= $year."-".$month."-31";
+        $datum_start    = strtotime($datum_begin);
+        $datum_ende     = strtotime($datum_end);
         $smarty->assign('month', $todayMonth);
         $smarty->assign('year', $todayYear);
 }
@@ -34,11 +38,11 @@ $intSet_anzahl = 0;
 $process        =   $_POST['process_id'];
 if($process != 0)
 {
-    $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start' AND synetics_data_process_id = '$process'");
+    $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date <= '$datum_ende' AND synetics_data_date >= '$datum_start' AND synetics_data_process_id = '$process'");
 }
 else
 {
-    $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date < '$datum_ende' AND synetics_data_date > '$datum_start'");
+    $mysql->query("SELECT * FROM synetics_data WHERE synetics_data_system_id = '$workerID' AND synetics_data_date <= '$datum_ende' AND synetics_data_date >= '$datum_start'");
 }
                 $data_numrows = $mysql->fetchNumRows();
                 
@@ -106,10 +110,11 @@ while ($process=mysql_fetch_array($process_result, MYSQL_ASSOC))
 $i++;   
 }				
 $mydata = array();
+$timeacc = array();
 $i = 0;
 		while($data=mysql_fetch_array($data_result, MYSQL_ASSOC))
 		{
-                        $mysql->query("SELECT synetics_system_name FROM synetics_system WHERE synetics_system__ID = '".$data['synetics_data_system_id']."'");
+                        $mysql->query("SELECT * FROM synetics_system WHERE synetics_system__ID = '".$data['synetics_data_system_id']."'");
                         $worker = $mysql->fetchArray();
 			$mysql->query("SELECT * FROM synetics_settings");
 			$settings 	= $mysql->fetchArray();
@@ -129,7 +134,6 @@ $i = 0;
 		$time_work2		= $mytime->timestamp_time2ger($data['synetics_data_worktimeto']);
 		$time_zur 		= $mytime->timestamp_time2ger($data['synetics_data_returnjourneyex']);
 		$time_zur2		= $mytime->timestamp_time2ger($data['synetics_data_returnjourneyto']);
-		
 				if($data['synetics_data_outjourneyex'] > $data['synetics_data_outjourneyto'])
 		{
 		
@@ -168,8 +172,20 @@ $i = 0;
 		$azpause		= $arbeitszeit  - ($pause);
 		$allhour				= $fahrtzeit + $arbeitszeit;
                 $ustunden               =       $azpause - $dayWorkTime;
+                
+                $timeacc[$datum]['worktime']    += $azpause;
+                $timeacc[$datum]['datum']        = $data['synetics_data_date'];
+                $timeacc[$datum]['weekwork']    += $worker['synetics_system_weekwork'];
+                $timeacc[$datum]['weekhour']    += $worker['synetics_system_weekhour'];
+                $timeacc[$datum]['journeytime'] += $fahrtzeit;
+                $allhour_all                    += $allhour;
+                $fahrtzeiten_all                += $fahrtzeit;
+                $arbeitszeit_all                += $azpause;
+
+                
+               
 		
-		$mydata[$i]['date'] 					= $datum['date'];
+		$mydata[$i]['date'] 					= $datum;
                 $mydata[$i]['process'] 					= $process['synetics_process_name'];
                 $mydata[$i]['synetics_data_worker']                         = utf8_encode($worker['synetics_system_name']);
 		$mydata[$i]['synetics_projects_projectname'] 		= utf8_encode($projects['synetics_projects_projectname']);
@@ -179,7 +195,7 @@ $i = 0;
 		$mydata[$i]['time_work2']						= $time_work2['time'];
 		$mydata[$i]['time_zur'] 						= $time_zur['time'];
 		$mydata[$i]['time_zur2']						= $time_zur2['time'];
-		$mydata[$i]['fahrtzeit']						= $fahrtzeit;
+		$mydata[$i]['fahrtzeit']						= $mytime->timersSTD($fahrtzeit);
 		$mydata[$i]['pause']							= $mytime->timersSTD($pause);
 		$mydata[$i]['azpause']							= $mytime->timersSTD($azpause);
 		$mydata[$i]['allhour'] 							= $mytime->timersSTD($allhour);
@@ -188,7 +204,12 @@ $i = 0;
                 $mydata[$i]['ustunden_synetics']                        = $mytime->timersSTD($ustunden);
 		$i++;
 		}
-                
+               
+                //var_dump($timeacc);
+        $smarty->assign('allhour_all', $time->timersSTD($allhour_all));
+        $smarty->assign('arbeitszeit_all', $time->timersSTD($arbeitszeit_all));
+        $smarty->assign('fahrtzeiten_all', $time->timersSTD($fahrtzeiten_all));
+        $smarty->assign('zeitkonto', $system->timeacc($timeacc));     
         $smarty->assign('year_month', $mytime->showmonth());
 	$smarty->assign('data_lastname', $mypersonal);
 	$smarty->assign('data_main', $mydata);

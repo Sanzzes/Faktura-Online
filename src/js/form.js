@@ -145,7 +145,7 @@
 	 				}
 	 	}
 	
- 	 function new_personal(p_personal_id)
+ 	 function new_personal()
  	{
 			document.getElementsByName("per_submit")[0].value = "Anlegen";
 			document.getElementsByName("perAction")[0].value = "1";
@@ -161,14 +161,13 @@
 		   dataType: "json",
 		   success: function(json){
 				document.getElementsByName("name")[0].value = json.synetics_system_name;
-				document.getElementsByName("surname")[0].value = json.synetics_system_surname;
 				document.getElementById("street").value = json.synetics_system_street;
-				document.getElementById("streetno").value = json.synetics_system_no;
 				document.getElementById("tele").value = json.synetics_system_tele;
-				document.getElementById("mobile").value = json.synetics_system_mobile;
 				document.getElementById("mail").value = json.synetics_system_mail;
 				document.getElementById("zipcode").value = json.synetics_system_zipcode;
 				document.getElementById("city").value = json.synetics_system_city;
+                                document.getElementById("weekwork").value = json.synetics_system_weekwork;
+                                document.getElementById("weekhour").value = json.synetics_system_weekhour;
 				document.getElementById("username").type = "hidden";
 				document.getElementById("passwort").type = "hidden";
 				document.getElementById("passwort_td").style.display = "none";
@@ -237,12 +236,60 @@
 				$("#rueckfahrt_1").val(json.synetics_data_returnjourneyex);
 				$("#rueckfahrt_2").val(json.synetics_data_returnjourneyto);
 				$("#wagen").val(json.synetics_data_whichcar);
+                                l_dcr = document.getElementsByName('foodoverall');
 				$("#hotelgarni").val(json.synetics_data_hotelgarni);
 				$("#rechnungstext").val(json.synetics_data_text);
 				$("#kilometer").val(json.synetics_data_km);
 				$("#workflow_ID").val(json.synetics_data_ID);
 				$("#tat_submit").val("Ändern");
 				$("#workAction").val("2");
+                                if(json.synetics_data_foodoverall != 0)
+				{
+				l_dcr[0].checked = true;
+                                }else{
+                                l_dcr[1].checked = true;   
+                                }
+				
+
+				$("#project").load("src/ajax/work.ajax.php",
+							{
+							ajax: "get_projekt",
+							dID:   json.synetics_data_client,
+							selected: json.synetics_data_projects_id
+							});
+				
+				$("#tat_form").fadeIn(1500).dialog("open");
+
+		   }
+		 });
+ 	}
+        
+        function copy_workflow(tat_workflow_id)
+ 	{
+ 		 		$.ajax({
+		   type: "POST",
+		   url: "./src/procajax.php",
+		   data: "ajax=get_workflow&workflowID= "+tat_workflow_id,
+		   dataType: "json",
+		   success: function(json){		   	
+				$("#worker").val(json.synetics_data_system_id);
+                                $("#process").val(json.synetics_data_process_id);
+				$("#client").val(json.synetics_data_client);
+				$("#workplace").val(json.synetics_data_city);
+				$("#hinfahrt_1").val(json.synetics_data_outjourneyex);
+				$("#hinfahrt_2").val(json.synetics_data_outjourneyto);
+				$("#zeit_1").val(json.synetics_data_worktimefrom);
+				$("#zeit_2").val(json.synetics_data_worktimeto);
+				$("#pause_1").val(json.synetics_data_pause);
+				$("#pause_2").val(json.synetics_data_wtpause);
+				$("#rueckfahrt_1").val(json.synetics_data_returnjourneyex);
+				$("#rueckfahrt_2").val(json.synetics_data_returnjourneyto);
+				$("#wagen").val(json.synetics_data_whichcar);
+				$("#hotelgarni").val(json.synetics_data_hotelgarni);
+				$("#rechnungstext").val(json.synetics_data_text);
+				$("#kilometer").val(json.synetics_data_km);
+				$("#tat_submit").val("Duplizieren");
+				$("#workAction").val("1");
 				$("#project").load("src/ajax/work.ajax.php",
 							{
 							ajax: "get_projekt",
