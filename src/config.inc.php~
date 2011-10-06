@@ -1,0 +1,9 @@
+<?php
+//SERVER SETTINGS FOR DATABASE
+$host="localhost";
+$user="sanzzes";
+$pw="gigagames12";
+$dbname="faktura";
+$maxShown="16";
+$installpath="/faktura";
+?>

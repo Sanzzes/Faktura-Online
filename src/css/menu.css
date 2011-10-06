@@ -1,0 +1,58 @@
+
+#stickey_footer { /* This will make your footer stay where it is */
+	background: none repeat scroll 0 0 #1D1D1D;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	top: 0;
+        left: 30%;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 0 10px;
+	position:absolute;
+	text-shadow: 1px 1px 1px #000000;
+
+}
+/* border curves */
+#stickey_footer {
+	-moz-border-radius: 0px 0px 10px 10px;
+	-webkit-border-radius: 0px 0px 10px 10px;
+	border-radius: 0px 0px 10px 10px;
+}
+/* hover effect */
+#stickey_footer:hover {
+	background: none repeat scroll 0 0 #2b2a2a;
+}
+/* shadow for the footer*/
+#stickey_footer {
+	-moz-box-shadow:0px 0px 11px #191919;
+	-webkit-box-shadow:0px 0px 11px #191919;
+	box-shadow:0px 0px 11px #191919;
+}
+#footer_menu {
+	margin: 0;
+	padding: 0;
+	width:auto;
+}
+#footer_menu li {
+	list-style: none;
+	float:left;
+	font-size:12px;
+	padding: 12px 14px 14px 14px;
+	border-right:1px solid rgba(0, 0, 0, 0.4);
+	background: rgba(0, 0, 0, 0.1);
+}
+
+#footer_menu li:hover {
+	background-color: #f8ff73; 
+        color: #ffffff;
+}
+
+#footer_menu li a {
+	display: block;
+	color: #ffffff;
+	text-decoration: none;
+}
+#footer_menu li a:hover {
+	color: #ffffff;
+}
+#footer_menu li span {
+	display:none;
+}
