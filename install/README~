@@ -1,0 +1,21 @@
+===== > ANFORDERUNGEN < =====
+
+Apache Server mit PHP 5.3
+MySQL 4.x.x
+
+Für LDAP Verbindungen auch PHP LDAP
+
+
+===== > INSTALLATION < ======
+
+1. Erstellen Sie mit einem beliebigen Programm eine MySQL Datenbank
+2. Batchen Sie die faktura.sql in diesem Ordner in die Datenbank die Sie angelegt haben.
+3. Passen Sie die Konfiguration unter src an Ihren Server an.
+4. Sollte alles Funktioniert haben können Sie nun die Seite aufrufen.
+
+Der Admin Benutzer für die ersten Einstellungen und das Setzen neuer Admins ist wie folg.
+
+===== ADMIN LOGIN =====
+
+Benutzername: 	admin
+Passwort:	admin 
