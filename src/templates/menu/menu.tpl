@@ -1,5 +1,4 @@
 <html>
-    <? xml versio="1.0" encoding="UTF-8" ?>
     <!DOCTYPE  html PUBLIC "-//WC3//DTD XHTML 1.1//EN"
         "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
     <head>
@@ -36,7 +35,7 @@
         <link rel="stylesheet" type="text/css" href="./src/css/jqtransform.css">
         <link rel="shortcut icon" type="image/x-icon" href="icon.ico">
     </head>
-    <body onLoad="preLoadingOff()">
+    <body onLoad="preLoadingOff()" class="ex_highlight_row">
         <div id="wrapper">
             <div id="noprint"> 
                 <div class="head">

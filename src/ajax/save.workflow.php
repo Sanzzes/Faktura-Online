@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(empty($_SESSION['user_username'])){
+    echo "Nicht eingeloggt kein zugriff";
+    
+}else{
 require_once '../config.inc.php';
 require_once '../classes/mysql_db.class.php';
 require_once '../classes/timestamp.class.php';
@@ -151,7 +156,7 @@ $project = 0;
 					synetics_data_projects_id,synetics_data_foodoverall,synetics_data_hotelgarni,synetics_data_process_id";
 			
 			foreach($l_arr AS $l_key => $l_val){
-				$l_query .= ",synetics_data".$l_key;
+				$l_query .= ", synetics_data".$l_key;
 			}
 			$l_query .= ") ";
 			$l_query .= "VALUES ('$datum_1','$client','$workplace','$hin_1','$hin_2',
@@ -164,7 +169,6 @@ $project = 0;
 			$l_query .= ")";
 		
 			$mydb->query($l_query);
-                        
                         
                         
                         $l_query_2 = "INSERT INTO synetics_distribution (synetics_distribution_DataID";
@@ -209,11 +213,12 @@ $project = 0;
 					synetics_data_projects_id=$project, synetics_data_foodoverall=$notthere, synetics_data_hotelgarni=$hotelgarni, synetics_data_process_id=$process";
 			
 			foreach($l_arr AS $l_key => $l_val){
-				$l_query_edit .= ",".$l_key."=".$l_val;
+				$l_query_edit .= ", synetics_data".$l_key."=".$l_val;
 			}
 			$l_query_edit .= " WHERE synetics_data_ID = '$workflow_ID'";
 			
 			$mydb->query($l_query_edit);
+                        echo $l_query_edit;
                         
                         $l_query_2 = "UPDATE synetics_distribution SET";
                          foreach ($l_arrd AS $l_key => $l_val){
@@ -234,7 +239,6 @@ $project = 0;
                         $l_query_2 .= " WHERE synetics_distribution_DataID = '$workflow_ID'";
                         
                         $mydb->query($l_query_2);
-                        echo $l_query_2;
 		}
 		else 
 		{
@@ -255,6 +259,7 @@ $project = 0;
                           }
                         			
 		}
+}           
 
 ?>
 

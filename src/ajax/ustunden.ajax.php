@@ -1,5 +1,9 @@
 <?php
-
+session_start();
+if(empty($_SESSION['user_username'])){
+    echo "Nicht eingeloggt kein zugriff";
+    
+}else{
 require_once '../config.inc.php';
 require_once '../classes/mysql_db.class.php';
 require_once '../classes/timestamp.class.php';
@@ -56,4 +60,5 @@ $dayWorkTime = $settings['synetics_settings_dayworktime'];
             $userid = NULL;
             echo "Keine Daten vorhanden";
         }
+}
 ?>

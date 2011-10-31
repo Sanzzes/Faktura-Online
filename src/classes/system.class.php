@@ -281,9 +281,13 @@ class system {
         while ($data = mysql_fetch_array($l_query, MYSQLI_ASSOC)) {
             $mysql->query("SELECT * FROM synetics_clients WHERE synetics_clients_id = '" . $data['synetics_clients_synetics_clients_clientno'] . "'");
             $c_query = $mysql->fetchRow();
+            
+            $mysql->query("SELECT * FROM synetics_system WHERE synetics_system__ID = '" . $data['synetics_projects_projecleader'] . "'");
+            $p_query = $mysql->fetchRow();
+            
             $project_data[$i]['projectname'] = utf8_encode($data['synetics_projects_projectname']);
             $project_data[$i]['id'] = $data['synetics_projects__ID'];
-            $project_data[$i]['leader'] = $data['synetics_projects_projecleader'];
+            $project_data[$i]['leader'] = utf8_encode($p_query['synetics_system_name']);
             $project_data[$i]['contact'] = utf8_encode($data['synetics_projects_contactperson']);
             $project_data[$i]['cost'] = $data['synetics_projects_cost'];
             $project_data[$i]['drivecost'] = $data['synetics_projects_drivecost'];

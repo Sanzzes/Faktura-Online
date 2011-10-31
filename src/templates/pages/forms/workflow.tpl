@@ -17,9 +17,9 @@
                             Mitarbeiter:
                             <select size="1" name="worker" id="worker">
                                 <option selected value="0">Bitte wählen</option>
-                                {foreach key=key_tu item=wert_tu from=$personal}
-                                    <option value="{$wert_tu.id}">{$wert_tu.name}</option>
-                                {/foreach}
+                    {foreach key=key_wert item=item_wert from=$data_lastname}
+                            <option value="{$item_wert.synetics_system__ID}">{$item_wert.synetics_system_name}</option>
+                    {/foreach}
                             </select>*</p>
 
                         <p align="left">

@@ -65,3 +65,9 @@ th {font-size: 12px;}
         height: 20px;
         
 }
+
+#img_slide {
+    
+    	-moz-border-radius:14px;
+	-webkit-border-radius:14px; 
+}

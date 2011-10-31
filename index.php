@@ -15,14 +15,7 @@ ini_set('dat.timezone', 'Europe/Berlin');
 //Catch Mobile Phones
 $android = stristr($_SERVER["HTTP_USER_AGENT"], 'Android');
 $iphone = stristr($_SERVER["HTTP_USER_AGENT"], 'iPhone');
-/*
-if(stristr($_SERVER["HTTP_USER_AGENT"], 'Android')){
-    header("Location: mobile/");
-}
-if(stristr($_SERVER["HTTP_USER_AGENT"], 'iPhone')){
-    header("Location: mobile/");
-}
-*/
+
 //Initialize SMARTY Library/Plugin
 define('SMARTY_DIR', 'src/libs/');
 require(SMARTY_DIR . 'Smarty.class.php');
@@ -37,9 +30,6 @@ $smarty->config_dir = "src/configs/";
 $smarty->cache_dir = "src/cache/";
 $smarty->caching = false;
 
-/*if(!file_exists("'".__DIR__."'/src/config.inc.php")){
-   header("Location: install/index.php");
-}*/
 //Check if config File Exist if not go to Setup Page
 //Check if Session is not Empty if empty go to Login
 if(empty($_SESSION['user_username'])){
@@ -47,6 +37,12 @@ if(empty($_SESSION['user_username'])){
     
 }else{
 
+ if(stristr($_SERVER["HTTP_USER_AGENT"], 'Android')){
+    header("Location: mobile/");
+}
+if(stristr($_SERVER["HTTP_USER_AGENT"], 'iPhone')){
+    header("Location: mobile/");
+}
 //Include Autloader
 require_once "src/loader.php";
 require_once "src/config.inc.php";

@@ -1,5 +1,9 @@
 <?php
-
+session_start();
+if(empty($_SESSION['user_username'])){
+    echo "Nicht eingeloggt kein zugriff";
+    
+}else{
 require_once '../config.inc.php';
 require_once '../classes/mysql_db.class.php';
 
@@ -12,4 +16,5 @@ foreach ($l_resu AS $index => $value) {
     $l_result[$index] = utf8_encode($value);
 }
 echo json_encode($l_result);
+}
 ?>

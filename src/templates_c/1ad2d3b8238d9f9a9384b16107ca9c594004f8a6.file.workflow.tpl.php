@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2011-10-25 09:40:25
+<?php /* Smarty version Smarty-3.0.7, created on 2011-10-31 11:04:25
          compiled from "src/templates/pages/forms/workflow.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:9651715984ea667e967d0a0-53926725%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2459000844eae72a978d5d1-85292561%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '1ad2d3b8238d9f9a9384b16107ca9c594004f8a6' => 
     array (
       0 => 'src/templates/pages/forms/workflow.tpl',
-      1 => 1319448977,
+      1 => 1320055463,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '9651715984ea667e967d0a0-53926725',
+  'nocache_hash' => '2459000844eae72a978d5d1-85292561',
   'function' => 
   array (
   ),
@@ -37,17 +37,17 @@ $_smarty_tpl->decodeProperties(array (
                             Mitarbeiter:
                             <select size="1" name="worker" id="worker">
                                 <option selected value="0">Bitte wählen</option>
-                                <?php  $_smarty_tpl->tpl_vars['wert_tu'] = new Smarty_Variable;
- $_smarty_tpl->tpl_vars['key_tu'] = new Smarty_Variable;
- $_from = $_smarty_tpl->getVariable('personal')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+                    <?php  $_smarty_tpl->tpl_vars['item_wert'] = new Smarty_Variable;
+ $_smarty_tpl->tpl_vars['key_wert'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('data_lastname')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 if ($_smarty_tpl->_count($_from) > 0){
-    foreach ($_from as $_smarty_tpl->tpl_vars['wert_tu']->key => $_smarty_tpl->tpl_vars['wert_tu']->value){
- $_smarty_tpl->tpl_vars['key_tu']->value = $_smarty_tpl->tpl_vars['wert_tu']->key;
+    foreach ($_from as $_smarty_tpl->tpl_vars['item_wert']->key => $_smarty_tpl->tpl_vars['item_wert']->value){
+ $_smarty_tpl->tpl_vars['key_wert']->value = $_smarty_tpl->tpl_vars['item_wert']->key;
 ?>
-                                    <option value="<?php echo $_smarty_tpl->tpl_vars['wert_tu']->value['id'];?>
-"><?php echo $_smarty_tpl->tpl_vars['wert_tu']->value['name'];?>
+                            <option value="<?php echo $_smarty_tpl->tpl_vars['item_wert']->value['synetics_system__ID'];?>
+"><?php echo $_smarty_tpl->tpl_vars['item_wert']->value['synetics_system_name'];?>
 </option>
-                                <?php }} ?>
+                    <?php }} ?>
                             </select>*</p>
 
                         <p align="left">

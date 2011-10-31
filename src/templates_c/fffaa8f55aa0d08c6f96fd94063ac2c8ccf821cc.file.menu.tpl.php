@@ -1,24 +1,23 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2011-10-25 09:40:22
+<?php /* Smarty version Smarty-3.0.7, created on 2011-10-31 15:30:56
          compiled from "src/templates/menu/menu.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:88210024ea667e6465281-22048905%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2030155854eaeb12041c680-86070935%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'fffaa8f55aa0d08c6f96fd94063ac2c8ccf821cc' => 
     array (
       0 => 'src/templates/menu/menu.tpl',
-      1 => 1319528417,
+      1 => 1320071455,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '88210024ea667e6465281-22048905',
+  'nocache_hash' => '2030155854eaeb12041c680-86070935',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
 <html>
-    <<?php ?>? xml versio="1.0" encoding="UTF-8" ?<?php ?>>
     <!DOCTYPE  html PUBLIC "-//WC3//DTD XHTML 1.1//EN"
         "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
     <head>
@@ -55,7 +54,7 @@ $_smarty_tpl->decodeProperties(array (
         <link rel="stylesheet" type="text/css" href="./src/css/jqtransform.css">
         <link rel="shortcut icon" type="image/x-icon" href="icon.ico">
     </head>
-    <body onLoad="preLoadingOff()">
+    <body onLoad="preLoadingOff()" class="ex_highlight_row">
         <div id="wrapper">
             <div id="noprint"> 
                 <div class="head">
